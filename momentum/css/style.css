@@ -233,7 +233,12 @@ body {
   background-color: transparent;
   border: 0;
   outline: 0;
+  cursor: pointer;
 }
+
+/* .name:hover {
+  border: solid 1px #fff;
+} */
 
 .name::placeholder {
   color: #fff;

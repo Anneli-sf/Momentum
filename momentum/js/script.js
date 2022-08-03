@@ -18,6 +18,7 @@ function showTime() {
     const currentTime = date.toLocaleTimeString();
     TIME.textContent = currentTime;
     showDate();
+    showGreeting();
     setTimeout(showTime, 1000);
 }
 
@@ -33,19 +34,21 @@ function showDate() {
 const GREETING = document.querySelector(".greeting");
 
 
-showGreeting();
+//------get greeting
 function showGreeting() {
-    //обеспеч отображение приветсвия
-    //обновляется - ф-ия
+    
+    const timeOfDay = getTimesOfDay();
+    const greetingText = `Good ${timeOfDay}, `;
 
+    return GREETING.textContent = greetingText;
     
 }
-getTimeOfDay();
-function getTimeOfDay() {
+
+//------get the current Times of Day
+function getTimesOfDay() {
     const date = new Date();
     const hours = date.getHours();
-    const currentOur = Math.floor(hours / 6);
-    console.log(typeof currentOur);
+    const currOur = Math.floor(hours / 6);
 
     let timesOfDay = [
         'night',
@@ -54,16 +57,10 @@ function getTimeOfDay() {
         'evening'
     ];
 
-    // let currTimeOfDay = () => {
-    //     for (let i=0; i < timesOfDay.length; i++) {
-    //     if (i == currentOur) return timesOfDay[i];
-    // }
-    // }
-
-    let currTimeOfDay = timesOfDay.reduce((total, el, index) => {
-        if (index == currentOur) total = el;
+    let currTimesOfDay = timesOfDay.reduce((total, el, index) => {
+        if (index == currOur) total = el;
         return total 
     })
-console.log(currTimeOfDay);
-    
+   
+    return currTimesOfDay;
 }
