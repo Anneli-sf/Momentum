@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Arial-MT';
-  src: url("../assets/fonts/Arial-MT.woff"); 
+  src: url("../images/fonts/Arial-MT.woff"); 
  }
 
 * {
@@ -16,7 +16,7 @@ body {
   font-size: 16px;
   color: #fff;
   text-align: center;
-  background: url("../assets/img/bg.jpg") center/cover, rgba(0, 0, 0, 0.5);
+  background: url("../images/img/bg.jpg") center/cover, rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
 }
@@ -103,19 +103,19 @@ body {
   width: 40px;
   height: 40px;
   background-size: 40px 40px;
-  background-image: url("../assets/svg/play.svg");
+  background-image: url("../images/svg/play.svg");
 }
 
 .pause {
-  background-image: url("../assets/svg/pause.svg");
+  background-image: url("../images/svg/pause.svg");
 }
 
 .play-prev {
-  background-image: url("../assets/svg/play-prev.svg");
+  background-image: url("../images/svg/play-prev.svg");
 }
 
 .play-next {
-  background-image: url("../assets/svg/play-next.svg");
+  background-image: url("../images/svg/play-next.svg");
 }
 
 .weather {
@@ -185,12 +185,12 @@ body {
 
 .slide-prev {
   left: 20px;
-  background-image: url("../assets/svg/slider-prev.svg");
+  background-image: url("../images/svg/slider-prev.svg");
 }
 
 .slide-next {
   right: 20px;
-  background-image: url("../assets/svg/slider-next.svg");
+  background-image: url("../images/svg/slider-next.svg");
 }
 
 .time {
@@ -225,7 +225,8 @@ body {
 
 .name {
   flex: 1;
-  max-width: 50%;
+  width: 20px;
+  /* max-width: 50%; */
   padding: 10px;
   font-size: 40px;
   text-align: left;
@@ -236,9 +237,10 @@ body {
   cursor: pointer;
 }
 
-/* .name:hover {
-  border: solid 1px #fff;
-} */
+.name:hover {
+  border-bottom: solid 1px #fff;
+
+}
 
 .name::placeholder {
   color: #fff;
@@ -258,7 +260,7 @@ body {
 
 .change-quote {
   margin-bottom: 30px;
-  background-image: url("../assets/svg/reload.svg");  
+  background-image: url("../images/svg/reload.svg");  
 }
 
 .quote {
