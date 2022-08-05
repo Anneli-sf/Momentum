@@ -1,5 +1,4 @@
 //-----------------------------GREETING------------------
-// const GREETING = document.querySelector(".greeting");
 
 //------get greeting
 function showGreeting(el) {
@@ -25,4 +24,4 @@ function getTimesOfDay() {
   return currTimesOfDay;
 }
 
-export {showGreeting, getTimesOfDay};
+export { showGreeting, getTimesOfDay };
