@@ -1,10 +1,12 @@
-import { showGreeting} from "./js/greeting";
+import { showGreeting, getTimesOfDay} from "./js/greeting";
 import { showDate } from "./js/date";
-import { NAME, setLocalStorage, getLocalStorage } from "./js/local-storage";
+import { setLocalStorage, getLocalStorage } from "./js/local-storage";
+import { getRandomNum } from "./js/get-random-num";
 
 const TIME = document.querySelector(".time");
 const DATE = document.querySelector(".date");
 const GREETING = document.querySelector(".greeting");
+const BODY = document.querySelector('body');
 
 
 //----------------------------when the page load---------------
@@ -25,54 +27,24 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
-// //-----------------------------DATE------------------
-// function showDate(el) {
-//   const date = new Date();
-//   const options = { weekday: "long", month: "long", day: "numeric" };
-//   const currentDate = date.toLocaleDateString("en-US", options);
-//   el.textContent = currentDate;
-// }
-
-// -----------------------------GREETING------------------
-
-// //------get greeting
-// function showGreeting(el) {
-//   const timeOfDay = getTimesOfDay();
-//   const greetingText = `Good ${timeOfDay}, `;
-
-//   return (el.textContent = greetingText);
-// }
-
-// //------get the current Times of Day
-// function getTimesOfDay() {
-//   const date = new Date();
-//   const hours = date.getHours();
-//   const currOur = Math.floor(hours / 6);
-
-//   let timesOfDay = ["night", "morning", "afternoon", "evening"];
-
-//   let currTimesOfDay = timesOfDay.reduce((total, el, index) => {
-//     if (index == currOur) total = el;
-//     return total;
-//   });
-
-//   return currTimesOfDay;
-// }
-
 
 //-------------------LOCAL STORAGE-----------------
-// function setLocalStorage() {
-//     localStorage.setItem('name', NAME.value);
-// }
 
 window.addEventListener('beforeunload', setLocalStorage);
 
-// function getLocalStorage() {
-//     if(localStorage.getItem('name')) 
-//         NAME.value = localStorage.getItem('name');
-    
-// }
-
 window.addEventListener('load', getLocalStorage);
 
+//-------------------BG IMAGE-----------------
 
+
+function setBgImage(item) {
+    
+    let timesOfDay = getTimesOfDay();
+    console.log(timesOfDay);
+    let bgImageNum = getRandomNum(1, 20).toString();
+    if (bgImageNum < 10) bgImageNum = bgImageNum.toString().padStart(2, 0);
+    console.log(bgImageNum);
+    item.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
+}
+
+setBgImage(BODY);
