@@ -1,7 +1,8 @@
 import { showGreeting, getTimesOfDay } from "./js/greeting";
 import { showDate } from "./js/date";
-import { setLocalStorage, getLocalStorage } from "./js/local-storage";
+import { setLocalStorage, getLocalStorage, CITY } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
+import {getWeather} from "./js/weather";
 
 const TIME = document.querySelector(".time");
 const DATE = document.querySelector(".date");
@@ -20,6 +21,7 @@ function loadPage() {
   showTime();
   setBgImage();
   getLocalStorage();
+  getWeather();
 }
 
 //-----------------------------WATCH------------------
@@ -78,20 +80,18 @@ function slidePrevImg() {
 }
 
 //--------------------WEATHER-------------
-const linkWeather = `url("https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=en&appid=3d3089a958d144a6b08451c705f4ef59&units=metric")`
-const WEATHER_ICON = document.querySelector('.weather-icon');
-const TEMPERATURE = document.querySelector('.temperature');
-const WEATHER_DISCR = document.querySelector('.weather-description');
 
-async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=en&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
-    WEATHER_ICON.classList.add(`owf-804`);
-    TEMPERATURE.textContent = `${Math.floor(data.main.temp)} °C`;
-    WEATHER_DISCR.textContent = data.weather[0].description;
-};
 
-getWeather();
+
+
+
+
+
+CITY.addEventListener('change', changeCity);
+
+function changeCity(e) {
+  CITY.value = e.target.value;
+  getWeather();
+}
+
