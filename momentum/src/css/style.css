@@ -119,6 +119,10 @@ body {
   background-image: url("../images/svg/play-next.svg");
 }
 
+.active {
+  color: #C5B358;
+}
+
 .weather {
   display: flex;
   flex-direction: column;

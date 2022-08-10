@@ -4,6 +4,7 @@ import { setLocalStorage, getLocalStorage, CITY } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
 import { getWeather } from "./js/weather";
 import { getQuote } from "./js/quote";
+import { playList } from "./js/playList";
 
 const TIME = document.querySelector(".time");
 const DATE = document.querySelector(".date");
@@ -96,31 +97,82 @@ function changeCity(e) {
 CHANGE_QUOTE.addEventListener("click", getQuote);
 
 //--------------------AUDIO PLAYER-------------
-const BTN_PLAY = document.querySelector('.play');
+const BTN_PLAY = document.querySelector(".play");
+const BTN_NEXT = document.querySelector(".play-next");
+const BTN_PREV = document.querySelector(".play-prev");
+const PLAY_LIST = document.querySelector(".play-list");
+
+const AUDIO = new Audio();
 let isPlay = false;
-BTN_PLAY.addEventListener('click', playAudio);
+let trackNum = 0;
 
-const audio = new Audio();
+BTN_PLAY.addEventListener("click", playAudio);
+BTN_NEXT.addEventListener("click", playNext);
+BTN_PREV.addEventListener("click", playPrev);
+AUDIO.addEventListener('ended', playNext);
 
-function playAudio() {
-  audio.src = `images/sounds/River Flows In You.mp3`;
-  if (!isPlay) {
-    audio.currentTime = 0;
-    audio.play();
-    isPlay = true;
-    BTN_PLAY.classList.remove('play');
-    BTN_PLAY.classList.add('pause');
-  } else {
-    audio.pause();
-    isPlay = false;
-    BTN_PLAY.classList.remove('pause');
-    BTN_PLAY.classList.add('play');
-  }
-  
-  
-
-
+function startAudio() {
+  AUDIO.currentTime = 0;
+  AUDIO.play();
+  // AUDIO.autoplay = true;
+  isPlay = true;
 }
 
+function playAudio() {
+  // audio.src = `images/sounds/River Flows In You.mp3`;
+  AUDIO.src = playList[trackNum].src;
+  const trackName = document.querySelectorAll(".play-item");
 
+  if (!isPlay) {
+    startAudio();
+    BTN_PLAY.classList.toggle("pause");
+    trackName[trackNum].classList.add("active");
+  } else {
+    AUDIO.pause();
+    isPlay = false;
+    BTN_PLAY.classList.toggle("pause");
+    trackName[trackNum].classList.remove("active");
+  }  
+}
 
+function playNext() {
+  const trackName = document.querySelectorAll(".play-item");
+  trackName.forEach(el => el.classList.remove('active'));
+
+  if (trackNum == playList.length - 1) trackNum = 0;
+  else trackNum = trackNum + 1;
+
+  AUDIO.src = playList[trackNum].src;
+  trackName[trackNum].classList.add("active");
+  startAudio();
+
+  if (BTN_PLAY.classList.contains("play")) {
+    BTN_PLAY.classList.add("pause");
+  }
+
+  // AUDIO.addEventListener('ended', playNext);
+}
+
+function playPrev() {
+  const trackName = document.querySelectorAll(".play-item");
+  trackName.forEach(el => el.classList.remove('active'));
+
+  if (trackNum == 0) trackNum = playList.length - 1;
+  else trackNum = trackNum - 1;
+
+  AUDIO.src = playList[trackNum].src;
+  trackName[trackNum].classList.add("active");
+  startAudio();
+
+  if (BTN_PLAY.classList.contains("play")) {
+    BTN_PLAY.classList.add("pause");
+  }
+}
+
+playList.forEach((track, index) => {
+  track = document.createElement("li");
+  track.classList.add("play-item");
+  track.textContent = `${playList[index].title}`;
+
+  PLAY_LIST.appendChild(track);
+});
