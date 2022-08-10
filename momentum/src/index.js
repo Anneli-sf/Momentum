@@ -2,7 +2,8 @@ import { showGreeting, getTimesOfDay } from "./js/greeting";
 import { showDate } from "./js/date";
 import { setLocalStorage, getLocalStorage, CITY } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
-import {getWeather} from "./js/weather";
+import { getWeather } from "./js/weather";
+import { getQuote } from "./js/quote";
 
 const TIME = document.querySelector(".time");
 const DATE = document.querySelector(".date");
@@ -10,6 +11,7 @@ const GREETING = document.querySelector(".greeting");
 const BODY = document.querySelector("body");
 const SLIDE_NEXT = document.querySelector(".slide-next");
 const SLIDE_PREV = document.querySelector(".slide-prev");
+const CHANGE_QUOTE = document.querySelector(".change-quote");
 
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
@@ -50,16 +52,16 @@ function getImageNumber() {
 }
 
 function setBgImage() {
-//   const img = new Image(); //если так, то подвисает загрузка
-//   img.src = "images/img/bg.jpg";
+  //   const img = new Image(); //если так, то подвисает загрузка
+  //   img.src = "images/img/bg.jpg";
 
   let timesOfDay = getTimesOfDay();
   getImageNumber();
 
   BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
-//   img.onload = () => {
-//     BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
-//   };
+  //   img.onload = () => {
+  //     BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
+  //   };
 }
 
 //-------------------SLIDER-----------------
@@ -82,28 +84,43 @@ function slidePrevImg() {
 
 //--------------------WEATHER-------------
 
-CITY.addEventListener('change', changeCity);
+CITY.addEventListener("change", changeCity);
 
 function changeCity(e) {
   CITY.value = e.target.value;
   getWeather();
 }
 
-
 //--------------------QUOTES-------------
 
-const QUOTE = document.querySelector('.quote');
-const AUTHOR = document.querySelector('.author');
+CHANGE_QUOTE.addEventListener("click", getQuote);
 
-async function getQuote() {
-  const quote = 'quotes.json';
-  const res = await fetch(quote);
-  const data = await res.json();
+//--------------------AUDIO PLAYER-------------
+const BTN_PLAY = document.querySelector('.play');
+let isPlay = false;
+BTN_PLAY.addEventListener('click', playAudio);
 
-  let quoteIndex = getRandomNum(1, 30);
+const audio = new Audio();
 
-  QUOTE.textContent = `${data[quoteIndex].text}`;
-  AUTHOR.textContent = `${data[quoteIndex].author}`;
+function playAudio() {
+  audio.src = `images/sounds/River Flows In You.mp3`;
+  if (!isPlay) {
+    audio.currentTime = 0;
+    audio.play();
+    isPlay = true;
+    BTN_PLAY.classList.remove('play');
+    BTN_PLAY.classList.add('pause');
+  } else {
+    audio.pause();
+    isPlay = false;
+    BTN_PLAY.classList.remove('pause');
+    BTN_PLAY.classList.add('play');
+  }
+  
+  
+
+
 }
+
 
 
