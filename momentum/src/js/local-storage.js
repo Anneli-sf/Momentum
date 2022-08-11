@@ -1,11 +1,18 @@
 //-------------------LOCAL STORAGE-----------------
 
-const NAME = document.querySelector(".name");
-const CITY = document.querySelector(".city");
+import { NAME } from "./greeting";
+import { CITY } from "./weather";
+import { translation } from "./translation";
+import { lang } from "./greeting";
+
+CITY.value = `${translation[lang].cityTr}`;
+console.log('local', CITY.value)
 
 function setLocalStorage() {
     localStorage.setItem('name', NAME.value);
     localStorage.setItem('city', CITY.value);
+    
+    console.log(CITY.value)
 }
 
 function getLocalStorage() {
@@ -17,4 +24,4 @@ function getLocalStorage() {
     
 }
 
-export {CITY, setLocalStorage, getLocalStorage};
+export { setLocalStorage, getLocalStorage};

@@ -1,20 +1,25 @@
+import { translation } from "./translation";
 //-----------------------------GREETING------------------
+const NAME = document.querySelector(".name");
+const GREETING = document.querySelector(".greeting");
+let lang = 'ru';
 
 //------get greeting
-function showGreeting(el) {
-  const timeOfDay = getTimesOfDay();
-  const greetingText = `Good ${timeOfDay}, `;
+function showGreeting(lang) {
+  const timeOfDay = getTimesOfDay(lang);
+  const greetingText = `${translation[lang].greetTr}${timeOfDay}, `;
+  NAME.placeholder = `${translation[lang].plHolderTr}`;
 
-  return (el.textContent = greetingText);
+  return (GREETING.textContent = greetingText);
 }
 
 //------get the current Times of Day
-function getTimesOfDay() {
+function getTimesOfDay(lang) {
   const date = new Date();
   const hours = date.getHours();
   const currOur = Math.floor(hours / 6);
 
-  let timesOfDay = ["night", "morning", "afternoon", "evening"];
+  let timesOfDay = translation[lang].timesOfDayTr;
 
   let currTimesOfDay = timesOfDay.reduce((total, el, index) => {
     if (index == currOur) total = el;
@@ -24,4 +29,4 @@ function getTimesOfDay() {
   return currTimesOfDay;
 }
 
-export { showGreeting, getTimesOfDay };
+export { NAME, GREETING, lang, showGreeting, getTimesOfDay };

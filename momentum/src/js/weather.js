@@ -1,3 +1,6 @@
+import { translation } from "./translation";
+import { lang } from "./greeting";
+
 //--------------------WEATHER-------------
 const WEATHER_ICON = document.querySelector('.weather-icon');
 const TEMPERATURE = document.querySelector('.temperature');
@@ -6,10 +9,14 @@ const WIND = document.querySelector('.wind');
 const HUMIDITY = document.querySelector('.humidity');
 const CITY = document.querySelector(".city");
 
-CITY.value = `Minsk`;
+// CITY.value = `${translation[lang].cityTr}`;
 
-export async function getWeather() {
-    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=en&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
+
+async function getWeather(lang) {
+  if (!CITY.value) CITY.value = `${translation[lang].cityTr}`;
+  console.log('weather', CITY.value)
+
+    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=${lang}&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
     // if (!weatherUrl) {
     //   weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=en&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
     //   alert('please, choose another city');
@@ -27,3 +34,4 @@ export async function getWeather() {
     // if (!CITY.value) alert('please, choose another city')
 };
 
+export {CITY, getWeather};

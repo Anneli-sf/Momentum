@@ -1,8 +1,8 @@
-import { showGreeting, getTimesOfDay } from "./js/greeting";
+import { lang, showGreeting, getTimesOfDay } from "./js/greeting";
 import { showDate } from "./js/date";
-import { setLocalStorage, getLocalStorage, CITY } from "./js/local-storage";
+import { setLocalStorage, getLocalStorage } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
-import { getWeather } from "./js/weather";
+import { CITY, getWeather } from "./js/weather";
 import { getQuote } from "./js/quote";
 import {
   BTN_PLAY,
@@ -15,8 +15,6 @@ import {
 } from "./js/audio-player";
 
 const TIME = document.querySelector(".time");
-const DATE = document.querySelector(".date");
-const GREETING = document.querySelector(".greeting");
 const BODY = document.querySelector("body");
 const SLIDE_NEXT = document.querySelector(".slide-next");
 const SLIDE_PREV = document.querySelector(".slide-prev");
@@ -24,17 +22,24 @@ const CHANGE_QUOTE = document.querySelector(".change-quote");
 
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
+// let lang = 'en';
 
 //----------------------------when the page load---------------
-window.addEventListener("load", loadPage);
+// window.addEventListener("load", loadPage);
 
-function loadPage() {
-  showTime();
+// function loadPage() {
+//   showTime();
+//   setBgImage();
+//   getLocalStorage();
+//   getWeather(lang);
+//   getQuote();
+// }
+
+showTime();
   setBgImage();
   getLocalStorage();
-  getWeather();
-  getQuote();
-}
+  getWeather(lang);
+  getQuote(lang);
 
 //-----------------------------WATCH------------------
 function showTime() {
@@ -42,8 +47,8 @@ function showTime() {
   const options = { hour12: false };
   const currentTime = date.toLocaleTimeString("en-US", options);
   TIME.textContent = currentTime;
-  showDate(DATE);
-  showGreeting(GREETING);
+  showDate(lang);
+  showGreeting(lang);
   setTimeout(showTime, 1000);
 }
 
@@ -63,8 +68,8 @@ function getImageNumber() {
 function setBgImage() {
   //   const img = new Image(); //если так, то подвисает загрузка
   //   img.src = "images/img/bg.jpg";
-
-  let timesOfDay = getTimesOfDay();
+  let lang = "en";
+  let timesOfDay = getTimesOfDay(lang);
   getImageNumber();
 
   BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
@@ -97,7 +102,7 @@ CITY.addEventListener("change", changeCity);
 
 function changeCity(e) {
   CITY.value = e.target.value;
-  getWeather();
+  getWeather(lang);
 }
 
 //--------------------QUOTES-------------

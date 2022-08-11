@@ -1,9 +1,14 @@
 //-----------------------------DATE------------------
-function showDate(el) {
+
+import { translation } from "./translation";
+
+const DATE = document.querySelector(".date");
+
+function showDate(lang) {
     const date = new Date();
     const options = { weekday: "long", month: "long", day: "numeric" };
-    const currentDate = date.toLocaleDateString("en-US", options);
-    el.textContent = currentDate;
+    const currentDate = date.toLocaleDateString(`${translation[lang].langTr}`, options);
+    DATE.textContent = currentDate;
   }
 
-  export {showDate};
+  export {DATE, showDate};

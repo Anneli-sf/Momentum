@@ -1,11 +1,14 @@
 //--------------------QUOTES-------------
 import { getRandomNum } from "./random-num";
 
+
 const QUOTE = document.querySelector('.quote');
 const AUTHOR = document.querySelector('.author');
 
-async function getQuote() {
-  const quote = 'quotes.json';
+async function getQuote(lang) {
+  let quote; 
+  if (lang = 'en') quote = 'quotes-en.json';
+  else quote = 'quotes-ru.json';
   const res = await fetch(quote);
   const data = await res.json();
 
