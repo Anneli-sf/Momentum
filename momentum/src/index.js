@@ -22,24 +22,19 @@ const CHANGE_QUOTE = document.querySelector(".change-quote");
 
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
+let changeQuoteDeg = 0;
 // let lang = 'en';
 
 //----------------------------when the page load---------------
-// window.addEventListener("load", loadPage);
+window.addEventListener("load", loadPage);
 
-// function loadPage() {
-//   showTime();
-//   setBgImage();
-//   getLocalStorage();
-//   getWeather(lang);
-//   getQuote();
-// }
-
-showTime();
+function loadPage() {
+  showTime();
   setBgImage();
   getLocalStorage();
   getWeather(lang);
   getQuote(lang);
+}
 
 //-----------------------------WATCH------------------
 function showTime() {
@@ -107,7 +102,14 @@ function changeCity(e) {
 
 //--------------------QUOTES-------------
 
-CHANGE_QUOTE.addEventListener("click", getQuote);
+CHANGE_QUOTE.addEventListener("click", changeQuote);
+
+function changeQuote () {
+  changeQuoteDeg = changeQuoteDeg + 180;
+  CHANGE_QUOTE.style.transform = `rotate(${changeQuoteDeg}deg)`;
+  CHANGE_QUOTE.style.transition = '0.6s';
+  getQuote(lang);
+}
 
 //--------------------AUDIO PLAYER-------------
 

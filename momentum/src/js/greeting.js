@@ -2,7 +2,7 @@ import { translation } from "./translation";
 //-----------------------------GREETING------------------
 const NAME = document.querySelector(".name");
 const GREETING = document.querySelector(".greeting");
-let lang = 'ru';
+let lang = 'en';
 
 //------get greeting
 function showGreeting(lang) {
