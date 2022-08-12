@@ -120,7 +120,7 @@ body {
 }
 
 .active {
-  color: #C5B358;
+  color: #832370;
 }
 
 .weather {
@@ -241,17 +241,12 @@ body {
   cursor: pointer;
 }
 
-/* .name:hover {
-  border-bottom: solid 1px #fff;
-
-} */
-
 .name::placeholder {
   color: #fff;
   opacity: .6;
 }
 
-.footer {
+/* .footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -260,7 +255,224 @@ body {
   height: 30vh;
   min-height: 160px;  
   padding: 20px;
+} */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
 }
+
+.footer-quotes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 70%;
+  height: 30vh;
+  min-height: 160px;  
+  padding: 20px;
+}
+
+/*------------SETTINGS----------*/
+
+.settings-button {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 40px;
+  height: 40px;
+  /* bottom: 0; */
+  background-image: url(../images/svg/settings.png);
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  align-self: flex-end;
+}
+
+.settings {
+    padding: 10px;
+    width: 25%;
+    height: auto;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    transition: all .5s ease 0s;
+    /* transform: translateX(-120%); */
+    overflow-y: auto;
+    position: fixed;
+    bottom: 65px;
+    z-index: 100;
+    /* border: 1px solid white; */
+    border-radius: 15px;
+    background: #832370;
+    opacity: 0.7;
+}
+
+.option {
+  font-family: inherit;
+  /* font-size: 1rem; */
+  background-color: var(--color-white);
+  color: #832370;
+  /* cursor: pointer; */
+}
+
+.choose-option {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+
+.choose-option p{
+  transition: ease-in-out 0.5s;
+  text-align: left;
+}
+
+.choose-option input{
+  width: 105px;
+  border: 1px;
+  transition: ease-in-out 0.5s;
+  opacity: 0;
+}
+
+.show-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* align-content: space-between; */
+  /* margin: 10px 20px; */
+}
+
+.show-option p{
+  margin-bottom: 10px;
+}
+
+select {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.show-inputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  columns: 2;
+  column-gap: 40px;
+  max-height: 160px;
+  cursor: pointer;
+}
+
+.show-inputs div{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  position: relative; /*для нестандартных инпутов*/
+}
+
+input[type="checkbox"]:checked, 
+input[type="checkbox"]:not(:checked) {
+  opacity: 0;
+} 
+
+input[type="checkbox"]:checked + label, 
+input[type="checkbox"]:not(:checked) + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:before, 
+input[type="checkbox"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+input[type="checkbox"]:checked + label:after, 
+input[type="checkbox"]:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked + label:after, 
+input[type="checkbox"]:not(:checked) + label:after {
+    left: 3px;
+    top: 3px;
+    width: 7px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 4px solid #832370;
+    border-bottom: 4px solid #832370;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+input[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked + label:after{
+    opacity: 1;
+}
+
+.show-inputs label {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.show-inputs label:hover {
+  color: #3f0834;
+}
+
+.line {
+  width: 95%;
+  margin: 5px auto;
+  height: 1px;
+  background-color: rgb(208, 231, 229, 0.7);
+}
+.about-me {
+  width: 95%;
+  margin: 10px 10px 0px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 14px;
+}
+
+.about-me a {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.about-me a:hover {
+  opacity: 1;
+}
+
+.rsschool{
+  width: 60px;
+}
+
+.github{
+  width: 1.8rem;
+}
+
+/*-------------------------------------*/
 
 .change-quote {
   margin-bottom: 30px;

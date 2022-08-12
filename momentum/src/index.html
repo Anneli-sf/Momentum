@@ -50,10 +50,84 @@
 
   <!---------------------------------------FOOTER-->
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <!--------------------------------settings-->
+    <button class="settings-button"></button>
+
+    <div class="settings">
+      <div class="choose-option">
+        <p class="text-choose-language">choose language</p>
+        <select class="change-language">
+          <option class="option" value="en">english</option>
+          <option class="option" value="ru">русский</option>
+        </select>
+      </div>
+      
+      <div class="choose-option">
+        <p class="text-choose-photosource">choose photo source</p>
+        <select class="change-photosource">
+          <option class="option" value="github">GitHub</option>
+          <option class="option" value="unsplash">Unsplash API</option>
+          <option class="option" value="flickr">Flickr API</option>
+        </select>
+      </div>
+
+      <div class="choose-option">
+        <p class="text-choose-background">enter background theme</p>
+        <input type="text" class="choose-background">
+      </div>
+
+      <div class="line"></div>
+
+      <div class="show-option">
+        <!-- <p class="text-show">SHOW</p> -->
+        
+        <div class="show-inputs">
+          <div>
+            <input type="checkbox" id="time" name="time" checked>
+            <label class="text-time" for="time">time</label>
+          </div>
+          <div>
+            <input type="checkbox" id="date" name="date" checked>
+            <label class="text-date" for="date">date</label>
+          </div>
+          <div>
+            <input type="checkbox" id="greeting" name="greeting" checked>
+            <label class="text-greeting" for="greeting">greeting</label>
+          </div>
+          <div>
+            <input type="checkbox" id="quotes" name="quotes" checked>
+            <label class="text-quotes" for="quotes">quotes</label>
+          </div>
+          <div>
+            <input type="checkbox" id="weather" name="weather" checked>
+            <label class="text-weather" for="weather">weather</label>
+          </div>
+          <div>
+            <input type="checkbox" id="audioplayer" name="audioplayer" checked>
+            <label class="text-audioplayer" for="audioplayer">audioplayer</label>
+          </div>
+          <div>
+            <input type="checkbox" id="todo" name="todo" checked>
+            <label class="text-todo" for="todo">todo</label>
+          </div>
+        </div>
+      
+      </div>
+      <div class="line"></div>
+      <div class="about-me">
+			  <p>©2022</p>
+        <a href="https://rs.school/js/" target="_blank"><img class="rsschool" src="images/svg/rs_school.svg" alt="logo_rss"></a>
+			  <a href="https://github.com/Anneli-sf" target="_blank"><img class="github" src="images/svg/github.png" alt="logo_github"></a>
+		  </div>
+    </div>
+
+    <!--------------------------------quotes-->
+    <div class="footer-quotes">
+        <button class="change-quote"></button>
+        <div>
+          <div class="quote"></div>
+          <div class="author"></div>
+        </div>
     </div>
   </footer>
 
