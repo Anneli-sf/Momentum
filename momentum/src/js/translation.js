@@ -13,5 +13,5 @@ export const translation = {
     timesOfDayTr: ["ой ночи", "е утро", "ый день", "ый вечер"],
     langTr: "ru-RU",
     cityTr: "Минск"
-  },
+  }
 };

@@ -1,5 +1,5 @@
-import { lang, showGreeting, getTimesOfDay } from "./js/greeting";
-import { showDate } from "./js/date";
+import { lang, showGreeting, getTimesOfDay, GREETING } from "./js/greeting";
+import { DATE, showDate } from "./js/date";
 import { setLocalStorage, getLocalStorage } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
 import { CITY, getWeather } from "./js/weather";
@@ -14,8 +14,9 @@ import {
   playPrev,
 } from "./js/audio-player";
 import {moveButtonTodo, moveButtonQuote, moveButtonSettings} from "./js/move-button";
+import { TIME, setSettings } from "./js/settings";
 
-const TIME = document.querySelector(".time");
+
 const BODY = document.querySelector("body");
 const SLIDE_NEXT = document.querySelector(".slide-next");
 const SLIDE_PREV = document.querySelector(".slide-prev");
@@ -118,19 +119,35 @@ BTN_NEXT.addEventListener("click", playNext);
 BTN_PREV.addEventListener("click", playPrev);
 AUDIO.addEventListener("ended", playNext);
 
-//--------------------SETTINGS-------------
+//--------------------SHOW SETTINGS-------------
+
 const BTN_SETTINGS = document.querySelector('.settings-button');
+const SETTINGS = document.querySelector('.settings');
+
+BODY.addEventListener('click', (el) => {
+  if (!el.target.closest('.settings') && !el.target.closest('.settings-button') ) 
+  SETTINGS.classList.remove('open');
+})
+
 BTN_SETTINGS.addEventListener('click', () => {
+  SETTINGS.classList.toggle('open');
   moveButtonSettings(BTN_SETTINGS);
 });
 
+//----------------- SET SETTINGS-------------------
 
+
+
+
+
+
+SETTINGS.addEventListener('click', setSettings);
 
 
 
 
 //--------------------TO DO-------------
-const BTN_TODO = document.querySelector('.todo-button');
+
 BTN_TODO.addEventListener('click', () => {
   moveButtonTodo(BTN_TODO);
 });

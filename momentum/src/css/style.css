@@ -22,6 +22,10 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -291,6 +295,7 @@ body {
 
 .settings {
     padding: 10px;
+    margin-bottom: 20px;
     width: 25%;
     height: auto;
     left: 20px;
@@ -298,7 +303,7 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     transition: all .5s ease 0s;
-    /* transform: translateX(-120%); */
+    transform: translateX(-120%);
     overflow-y: auto;
     position: fixed;
     bottom: 65px;
@@ -307,6 +312,10 @@ body {
     border-radius: 15px;
     background: #832370;
     opacity: 0.7;
+}
+
+.settings.open {
+  transform: translateX(0%);
 }
 
 .option {
@@ -341,9 +350,9 @@ body {
   /* margin: 10px 20px; */
 }
 
-.show-option p{
+/* .show-option p{
   margin-bottom: 10px;
-}
+} */
 
 select {
   cursor: pointer;
