@@ -6,7 +6,7 @@ const NAME = document.querySelector(".name");
 const GREETING = document.querySelector(".greeting");
 
 // let lang = changeLanguage();
-let lang = 'en'
+let lang = 'ru'
 
 console.log('greeting', lang)
 

@@ -4,7 +4,17 @@ export const translation = {
     plHolderTr: "enter your name",
     timesOfDayTr: ["night", "morning", "afternoon", "evening"],
     langTr: "en-US",
-    cityTr: "Minsk"
+    cityTr: "Minsk",
+    chooseLangTr: "choose language",
+    chooseSourceTr: "choose photo source",
+    enterBgTemeTr: "enter background theme",
+    timeTr: "time",
+    dateTr: "date",
+    greetingTr: "greeting",
+    quoteTr: "quote",
+    weatherTr: "weather",
+    audioTr: "audio player",
+    todoTr: "todo"
   },
 
   'ru': {
@@ -12,6 +22,16 @@ export const translation = {
     plHolderTr: "введите ваше имя",
     timesOfDayTr: ["ой ночи", "е утро", "ый день", "ый вечер"],
     langTr: "ru-RU",
-    cityTr: "Минск"
+    cityTr: "Минск",
+    chooseLangTr: "выберите язык",
+    chooseSourceTr: "выберите источник фона",
+    enterBgTemeTr: "введите тему фона",
+    timeTr: "время",
+    dateTr: "дата",
+    greetingTr: "приветствие",
+    quoteTr: "цитата",
+    weatherTr: "погода",
+    audioTr: "аудио плейер",
+    todoTr: "список дел"
   }
 };

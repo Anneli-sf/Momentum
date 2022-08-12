@@ -19,7 +19,7 @@ import {
   moveButtonQuote,
   moveButtonSettings,
 } from "./js/move-button";
-import { TIME, BTN_TODO, setSettings } from "./js/settings";
+import { TIME, BTN_TODO, setSettings, createSettings } from "./js/settings";
 import { LANGUAGE_OPTION, language, changeLanguage } from "./js/translate";
 
 
@@ -137,11 +137,16 @@ BODY.addEventListener("click", (el) => {
 BTN_SETTINGS.addEventListener("click", () => {
   SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
+  createSettings(lang);
 });
 
 //----------------- SET SETTINGS-------------------
 
 SETTINGS.addEventListener("click", setSettings);
+
+
+
+
 
 //--------------------TO DO-------------
 
