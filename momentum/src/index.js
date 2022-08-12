@@ -13,6 +13,7 @@ import {
   playNext,
   playPrev,
 } from "./js/audio-player";
+import {moveButtonTodo, moveButtonQuote, moveButtonSettings} from "./js/move-button";
 
 const TIME = document.querySelector(".time");
 const BODY = document.querySelector("body");
@@ -22,7 +23,7 @@ const CHANGE_QUOTE = document.querySelector(".change-quote");
 
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
-let changeQuoteDeg = 0;
+
 // let lang = 'en';
 
 //----------------------------when the page load---------------
@@ -105,11 +106,10 @@ function changeCity(e) {
 CHANGE_QUOTE.addEventListener("click", changeQuote);
 
 function changeQuote () {
-  changeQuoteDeg = changeQuoteDeg + 180;
-  CHANGE_QUOTE.style.transform = `rotate(${changeQuoteDeg}deg)`;
-  CHANGE_QUOTE.style.transition = '0.6s';
+  moveButtonQuote(CHANGE_QUOTE);
   getQuote(lang);
 }
+
 
 //--------------------AUDIO PLAYER-------------
 
@@ -117,3 +117,20 @@ BTN_PLAY.addEventListener("click", playAudio);
 BTN_NEXT.addEventListener("click", playNext);
 BTN_PREV.addEventListener("click", playPrev);
 AUDIO.addEventListener("ended", playNext);
+
+//--------------------SETTINGS-------------
+const BTN_SETTINGS = document.querySelector('.settings-button');
+BTN_SETTINGS.addEventListener('click', () => {
+  moveButtonSettings(BTN_SETTINGS);
+});
+
+
+
+
+
+
+//--------------------TO DO-------------
+const BTN_TODO = document.querySelector('.todo-button');
+BTN_TODO.addEventListener('click', () => {
+  moveButtonTodo(BTN_TODO);
+});
