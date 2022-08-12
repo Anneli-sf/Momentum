@@ -5,7 +5,7 @@ import { CITY } from "./weather";
 import { translation } from "./translation";
 import { lang } from "./greeting";
 
-CITY.value = `${translation[lang].cityTr}`;
+CITY.value = `${translation[lang.value].cityTr}`;
 // console.log('local', CITY.value)
 
 function setLocalStorage() {

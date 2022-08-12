@@ -16,10 +16,9 @@ import {
 } from "./js/audio-player";
 import {
   moveButtonTodo,
-  moveButtonQuote,
-  moveButtonSettings,
+  moveButtonQuote
 } from "./js/move-button";
-import { TIME, BTN_TODO, setSettings, createSettings } from "./js/settings";
+import { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, setSettings, createSettings, openSettings } from "./js/settings";
 import { LANGUAGE_OPTION, language, changeLanguage } from "./js/translate";
 
 
@@ -39,8 +38,8 @@ function loadPage() {
   showTime();
   setBgImage();
   getLocalStorage();
-  getWeather(lang);
-  getQuote(lang);
+  getWeather(lang.value);
+  getQuote(lang.value);
 }
 
 //-----------------------------WATCH------------------
@@ -49,8 +48,8 @@ function showTime() {
   const options = { hour12: false };
   const currentTime = date.toLocaleTimeString("en-US", options);
   TIME.textContent = currentTime;
-  showDate(lang);
-  showGreeting(lang);
+  showDate(lang.value);
+  showGreeting(lang.value);
   setTimeout(showTime, 1000);
 }
 
@@ -105,7 +104,7 @@ CITY.addEventListener("change", changeCity);
 
 function changeCity(e) {
   CITY.value = e.target.value;
-  getWeather(lang);
+  getWeather(lang.value);
 }
 
 //--------------------QUOTES-------------
@@ -114,7 +113,7 @@ CHANGE_QUOTE.addEventListener("click", changeQuote);
 
 function changeQuote() {
   moveButtonQuote(CHANGE_QUOTE);
-  getQuote(lang);
+  getQuote(lang.value);
 }
 
 //--------------------AUDIO PLAYER-------------
@@ -124,27 +123,15 @@ BTN_NEXT.addEventListener("click", playNext);
 BTN_PREV.addEventListener("click", playPrev);
 AUDIO.addEventListener("ended", playNext);
 
-//--------------------SHOW SETTINGS-------------
+//--------------------SETTINGS-------------
 
-const BTN_SETTINGS = document.querySelector(".settings-button");
-const SETTINGS = document.querySelector(".settings");
+BTN_SETTINGS.addEventListener("click", () => openSettings(lang.value));
+SETTINGS.addEventListener("click", setSettings);
 
 BODY.addEventListener("click", (el) => {
   if (!el.target.closest(".settings") && !el.target.closest(".settings-button"))
     SETTINGS.classList.remove("open");
 });
-
-BTN_SETTINGS.addEventListener("click", () => {
-  SETTINGS.classList.toggle("open");
-  moveButtonSettings(BTN_SETTINGS);
-  createSettings(lang);
-});
-
-//----------------- SET SETTINGS-------------------
-
-SETTINGS.addEventListener("click", setSettings);
-
-
 
 
 
@@ -156,15 +143,26 @@ BTN_TODO.addEventListener("click", () => {
 
 //--------------------TRANSLATION------------
 
-// LANGUAGE_OPTION.addEventListener('change', (currLang) => {
-//   currLang = LANGUAGE_OPTION.value;
-//   console.log('option', currLang)
-//   getWeather(currLang);
-//   getQuote(currLang);
-//   showDate(currLang);
-//   showGreeting(currLang);
-// });
+LANGUAGE_OPTION.addEventListener('change', (e) => {
+  lang.value = e.currentTarget.value;
+  console.log('сейчас', lang.value)
+  getWeather(lang.value);
+  getQuote(lang.value);
+  showDate(lang.value);
+  showGreeting(lang.value);
+  createSettings(lang.value);
+});
 
+//--------------------API------------
 
+// function getLinkApi() {
+//   const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=83edTzadSNG1MdwI8nd8CP-UpYibtaLhSSqKAE_hcOU';
+//   fetch(url)
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data.urls.regular)
+//     });
+//   }
 
+//   getLinkApi()
 

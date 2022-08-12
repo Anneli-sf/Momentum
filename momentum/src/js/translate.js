@@ -11,4 +11,4 @@ function changeLanguage() {
   return language;
 }
 
-// export {LANGUAGE_OPTION, language, changeLanguage};
+export {LANGUAGE_OPTION, changeLanguage};

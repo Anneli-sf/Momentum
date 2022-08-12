@@ -1,8 +1,11 @@
 //----------------- SET SETTINGS-------------------
 import { DATE } from "./date";
 import { translation } from "./translation";
-import { lang } from "./greeting";
+import { moveButtonSettings } from "./move-button";
+// import { lang } from "./greeting";
 
+const SETTINGS = document.querySelector(".settings");
+const BTN_SETTINGS = document.querySelector(".settings-button");
 
 const audioSet = document.querySelector("#audio");
 const dataSet = document.querySelector("#date");
@@ -12,17 +15,16 @@ const todoSet = document.querySelector("#todo");
 const greetingSet = document.querySelector("#greeting");
 const weatherSet = document.querySelector("#weather");
 
-const langSetText = document.querySelector('.text-choose-language');
-const photoSourseSetText = document.querySelector('.text-choose-photosource');
-const bgThemeSetText = document.querySelector('.text-choose-background');
-const dateSetText = document.querySelector('.text-date');
-const timeSetText = document.querySelector('.text-time');
-const greetSetText = document.querySelector('.text-greeting');
-const quoteSetText = document.querySelector('.text-quotes');
-const weatherSetText = document.querySelector('.text-weather');
-const audioSetText = document.querySelector('.text-audioplayer');
-const todoSetText = document.querySelector('.text-todo');
-
+const langSetText = document.querySelector(".text-choose-language");
+const photoSourseSetText = document.querySelector(".text-choose-photosource");
+const bgThemeSetText = document.querySelector(".text-choose-background");
+const dateSetText = document.querySelector(".text-date");
+const timeSetText = document.querySelector(".text-time");
+const greetSetText = document.querySelector(".text-greeting");
+const quoteSetText = document.querySelector(".text-quotes");
+const weatherSetText = document.querySelector(".text-weather");
+const audioSetText = document.querySelector(".text-audioplayer");
+const todoSetText = document.querySelector(".text-todo");
 
 const PLAYER = document.querySelector(".player");
 const GREETING_ARTICLE = document.querySelector(".greeting-container");
@@ -61,10 +63,10 @@ function setSettings() {
 }
 
 function createSettings(lang) {
-    
   langSetText.textContent = `${translation[lang].chooseLangTr}`;
   photoSourseSetText.textContent = `${translation[lang].chooseSourceTr}`;
   bgThemeSetText.textContent = `${translation[lang].enterBgTemeTr}`;
+  bgThemeSetText.classList.add("hidden");
   dateSetText.textContent = `${translation[lang].dateTr}`;
   timeSetText.textContent = `${translation[lang].timeTr}`;
   greetSetText.textContent = `${translation[lang].greetingTr}`;
@@ -74,4 +76,10 @@ function createSettings(lang) {
   todoSetText.textContent = `${translation[lang].todoTr}`;
 }
 
-export { TIME, BTN_TODO, setSettings, createSettings };
+function openSettings(lang) {
+  SETTINGS.classList.toggle("open");
+  moveButtonSettings(BTN_SETTINGS);
+  createSettings(lang);
+}
+
+export { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, setSettings, createSettings, openSettings };
