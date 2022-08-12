@@ -18,8 +18,9 @@ import {
   moveButtonTodo,
   moveButtonQuote
 } from "./js/move-button";
-import { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, setSettings, createSettings, openSettings } from "./js/settings";
-import { LANGUAGE_OPTION, language, changeLanguage } from "./js/translate";
+import { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, setSettings, createSettings, openSettings } from "./js/settings";
+import { LANGUAGE_OPTION } from "./js/translate";
+import { getLinkUnsplash, getLinkFlickr } from "./js/upsplash-flick";
 
 
 const BODY = document.querySelector("body");
@@ -60,6 +61,8 @@ window.addEventListener("beforeunload", setLocalStorage);
 
 //-------------------BG IMAGE-----------------
 
+
+
 function getImageNumber() {
   if (randomNum < 10) bgImageNum = randomNum.toString().padStart(2, 0);
   else bgImageNum = randomNum.toString();
@@ -67,14 +70,30 @@ function getImageNumber() {
   return bgImageNum; //type String
 }
 
-function setBgImage() {
+PHOTO_SOURCE_OPTION.addEventListener('change', setBgImage);
+
+async function setBgImage() {
   //   const img = new Image(); //если так, то подвисает загрузка
   //   img.src = "images/img/bg.jpg";
   let lang = "en";
   let timesOfDay = getTimesOfDay(lang);
+  let linkUnsplash = await getLinkUnsplash();
+  let linkFlickr = await getLinkFlickr();
+
+
+  // console.log('linkUnsplash', linkUnsplash)
   getImageNumber();
 
-  BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
+  switch(PHOTO_SOURCE_OPTION.value) {
+    case 'github': return BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
+    case 'unsplash': return BODY.style.backgroundImage = `url(${linkUnsplash})`;
+    default: return BODY.style.backgroundImage = `url(${linkFlickr})`;
+  }
+
+
+  // if (PHOTO_SOURCE_OPTION.value == 'github') 
+  // BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
+  
   //   img.onload = () => {
   //     BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
   //   };
@@ -155,14 +174,4 @@ LANGUAGE_OPTION.addEventListener('change', (e) => {
 
 //--------------------API------------
 
-// function getLinkApi() {
-//   const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=83edTzadSNG1MdwI8nd8CP-UpYibtaLhSSqKAE_hcOU';
-//   fetch(url)
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data.urls.regular)
-//     });
-//   }
-
-//   getLinkApi()
 

@@ -7,6 +7,8 @@ import { moveButtonSettings } from "./move-button";
 const SETTINGS = document.querySelector(".settings");
 const BTN_SETTINGS = document.querySelector(".settings-button");
 
+const PHOTO_SOURCE_OPTION = document.querySelector(".change-photosource");
+
 const audioSet = document.querySelector("#audio");
 const dataSet = document.querySelector("#date");
 const timeSet = document.querySelector("#time");
@@ -82,4 +84,4 @@ function openSettings(lang) {
   createSettings(lang);
 }
 
-export { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, setSettings, createSettings, openSettings };
+export { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, setSettings, createSettings, openSettings };
