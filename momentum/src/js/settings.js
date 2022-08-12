@@ -46,4 +46,4 @@ function setSettings() {
   );
 }
 
-export { TIME, setSettings };
+export { TIME, BTN_TODO, setSettings };

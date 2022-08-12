@@ -1,5 +1,5 @@
 import { translation } from "./translation";
-import { lang } from "./greeting";
+import { lang } from "./translate";
 
 //--------------------WEATHER-------------
 const WEATHER_ICON = document.querySelector('.weather-icon');
@@ -8,8 +8,6 @@ const WEATHER_DISCR = document.querySelector('.weather-description');
 const WIND = document.querySelector('.wind');
 const HUMIDITY = document.querySelector('.humidity');
 const CITY = document.querySelector(".city");
-
-// CITY.value = `${translation[lang].cityTr}`;
 
 
 async function getWeather(lang) {

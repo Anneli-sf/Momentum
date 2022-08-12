@@ -3,7 +3,6 @@ let changeDegTodo = 0;
 let changeDegQuote = 0;
 let changeDegSettings = 0;
 
-
 function moveButtonTodo(el) {
   changeDegTodo = changeDegTodo + 180;
   el.style.transform = `rotateY(${changeDegTodo}deg)`;

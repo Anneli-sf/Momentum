@@ -1,9 +1,10 @@
-import { lang, showGreeting, getTimesOfDay, GREETING } from "./js/greeting";
+import { showGreeting, getTimesOfDay, lang, GREETING } from "./js/greeting";
 import { DATE, showDate } from "./js/date";
 import { setLocalStorage, getLocalStorage } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
 import { CITY, getWeather } from "./js/weather";
 import { getQuote } from "./js/quote";
+// import { translation } from "./js/translation";
 import {
   BTN_PLAY,
   BTN_NEXT,
@@ -13,8 +14,13 @@ import {
   playNext,
   playPrev,
 } from "./js/audio-player";
-import {moveButtonTodo, moveButtonQuote, moveButtonSettings} from "./js/move-button";
-import { TIME, setSettings } from "./js/settings";
+import {
+  moveButtonTodo,
+  moveButtonQuote,
+  moveButtonSettings,
+} from "./js/move-button";
+import { TIME, BTN_TODO, setSettings } from "./js/settings";
+import { LANGUAGE_OPTION, language, changeLanguage } from "./js/translate";
 
 
 const BODY = document.querySelector("body");
@@ -25,7 +31,6 @@ const CHANGE_QUOTE = document.querySelector(".change-quote");
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
 
-// let lang = 'en';
 
 //----------------------------when the page load---------------
 window.addEventListener("load", loadPage);
@@ -52,6 +57,7 @@ function showTime() {
 //-------------------LOCAL STORAGE-----------------
 
 window.addEventListener("beforeunload", setLocalStorage);
+
 
 //-------------------BG IMAGE-----------------
 
@@ -106,11 +112,10 @@ function changeCity(e) {
 
 CHANGE_QUOTE.addEventListener("click", changeQuote);
 
-function changeQuote () {
+function changeQuote() {
   moveButtonQuote(CHANGE_QUOTE);
   getQuote(lang);
 }
-
 
 //--------------------AUDIO PLAYER-------------
 
@@ -121,33 +126,40 @@ AUDIO.addEventListener("ended", playNext);
 
 //--------------------SHOW SETTINGS-------------
 
-const BTN_SETTINGS = document.querySelector('.settings-button');
-const SETTINGS = document.querySelector('.settings');
+const BTN_SETTINGS = document.querySelector(".settings-button");
+const SETTINGS = document.querySelector(".settings");
 
-BODY.addEventListener('click', (el) => {
-  if (!el.target.closest('.settings') && !el.target.closest('.settings-button') ) 
-  SETTINGS.classList.remove('open');
-})
+BODY.addEventListener("click", (el) => {
+  if (!el.target.closest(".settings") && !el.target.closest(".settings-button"))
+    SETTINGS.classList.remove("open");
+});
 
-BTN_SETTINGS.addEventListener('click', () => {
-  SETTINGS.classList.toggle('open');
+BTN_SETTINGS.addEventListener("click", () => {
+  SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
 });
 
 //----------------- SET SETTINGS-------------------
 
-
-
-
-
-
-SETTINGS.addEventListener('click', setSettings);
-
-
-
+SETTINGS.addEventListener("click", setSettings);
 
 //--------------------TO DO-------------
 
-BTN_TODO.addEventListener('click', () => {
+BTN_TODO.addEventListener("click", () => {
   moveButtonTodo(BTN_TODO);
 });
+
+//--------------------TRANSLATION------------
+
+// LANGUAGE_OPTION.addEventListener('change', (currLang) => {
+//   currLang = LANGUAGE_OPTION.value;
+//   console.log('option', currLang)
+//   getWeather(currLang);
+//   getQuote(currLang);
+//   showDate(currLang);
+//   showGreeting(currLang);
+// });
+
+
+
+

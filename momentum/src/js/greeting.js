@@ -1,8 +1,14 @@
 import { translation } from "./translation";
+// import { LANGUAGE_OPTION, changeLanguage, language } from "./translate";
+
 //-----------------------------GREETING------------------
 const NAME = document.querySelector(".name");
 const GREETING = document.querySelector(".greeting");
-let lang = 'en';
+
+// let lang = changeLanguage();
+let lang = 'en'
+
+console.log('greeting', lang)
 
 //------get greeting
 function showGreeting(lang) {
