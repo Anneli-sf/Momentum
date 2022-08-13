@@ -14,13 +14,11 @@ function openToDo(lang) {
   moveButtonTodo(BTN_TODO);
 
   activeOpt.textContent = `${translation[lang].activeTr}`;
-    completedOpt.textContent = `${translation[lang].completedTr}`;
-    deletedOpt.textContent = `${translation[lang].deletedTr}`;
+  completedOpt.textContent = `${translation[lang].completedTr}`;
+  deletedOpt.textContent = `${translation[lang].deletedTr}`;
 }
 
-
 const todoFunction = {
- 
   action(e) {
     const target = e.target;
     if (target.classList.contains("todo-action")) {

@@ -8,19 +8,30 @@ const WEATHER_DISCR = document.querySelector('.weather-description');
 const WIND = document.querySelector('.wind');
 const HUMIDITY = document.querySelector('.humidity');
 const CITY = document.querySelector(".city");
+const ERROR_TEXT = document.querySelector(".weather-error");
 
 
 async function getWeather(lang) {
-  if (!CITY.value) CITY.value = `${translation[lang].cityTr}`;
-  console.log('weather', CITY.value)
+  
 
-    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=${lang}&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
-    // if (!weatherUrl) {
-    //   weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=en&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
-    //   alert('please, choose another city');
-    // }
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=${lang}&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
+    
       const weatherRes = await fetch(weatherUrl);
       const weatherData = await weatherRes.json();
+
+      if (weatherRes.status == 404) {
+        ERROR_TEXT.textContent = `Error: city isn't found`;
+        TEMPERATURE.textContent = "";
+        WIND.textContent = "";
+        HUMIDITY.textContent = "";
+      } else if (weatherRes.status == 400) {
+        ERROR_TEXT.textContent = `Error: enter the city`;
+        TEMPERATURE.textContent = "";
+        WIND.textContent = "";
+        HUMIDITY.textContent = "";
+      } else {
+        ERROR_TEXT.textContent = "";
+      }
 
       console.log(weatherData)
       CITY.placeholder = `${translation[lang].cityPlaceHolderTr}`;
