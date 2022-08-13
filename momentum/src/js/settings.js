@@ -2,12 +2,14 @@
 import { DATE } from "./date";
 import { translation } from "./translation";
 import { moveButtonSettings } from "./move-button";
+import { BTN_TODO } from "./todo";
 // import { lang } from "./greeting";
 
 const SETTINGS = document.querySelector(".settings");
 const BTN_SETTINGS = document.querySelector(".settings-button");
 
 const PHOTO_SOURCE_OPTION = document.querySelector(".change-photosource");
+const BG_THEME = document.querySelector(".choose-background");
 
 const audioSet = document.querySelector("#audio");
 const dataSet = document.querySelector("#date");
@@ -32,7 +34,7 @@ const PLAYER = document.querySelector(".player");
 const GREETING_ARTICLE = document.querySelector(".greeting-container");
 const QUOTE_ARTICLE = document.querySelector(".footer-quotes");
 const WEATHER = document.querySelector(".weather");
-const BTN_TODO = document.querySelector(".todo-button");
+
 const TIME = document.querySelector(".time");
 
 let settingsData = [
@@ -68,7 +70,9 @@ function createSettings(lang) {
   langSetText.textContent = `${translation[lang].chooseLangTr}`;
   photoSourseSetText.textContent = `${translation[lang].chooseSourceTr}`;
   bgThemeSetText.textContent = `${translation[lang].enterBgTemeTr}`;
+  BG_THEME.placeholder = `${translation[lang].bgPlaceHolderTr}`;
   bgThemeSetText.classList.add("hidden");
+  BG_THEME.classList.add("hidden");
   dateSetText.textContent = `${translation[lang].dateTr}`;
   timeSetText.textContent = `${translation[lang].timeTr}`;
   greetSetText.textContent = `${translation[lang].greetingTr}`;
@@ -76,12 +80,23 @@ function createSettings(lang) {
   weatherSetText.textContent = `${translation[lang].weatherTr}`;
   audioSetText.textContent = `${translation[lang].audioTr}`;
   todoSetText.textContent = `${translation[lang].todoTr}`;
+
+  if (PHOTO_SOURCE_OPTION.value == 'flickr') {
+    bgThemeSetText.classList.remove("hidden");
+    BG_THEME.classList.remove("hidden");
+  }
 }
 
 function openSettings(lang) {
   SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
   createSettings(lang);
+
+  // if (PHOTO_SOURCE_OPTION.value == 'flickr') {
+  //   bgThemeSetText.classList.remove("hidden");
+  //   BG_THEME.classList.remove("hidden");
+  // }
+
 }
 
-export { TIME, BTN_TODO, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, setSettings, createSettings, openSettings };
+export { TIME, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, BG_THEME, bgThemeSetText,  setSettings, createSettings, openSettings };
