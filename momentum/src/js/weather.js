@@ -23,7 +23,7 @@ async function getWeather(lang) {
       const weatherData = await weatherRes.json();
 
       console.log(weatherData)
-      
+      CITY.placeholder = `${translation[lang].cityPlaceHolderTr}`;
       WEATHER_ICON.className = 'weather-icon owf';
       WEATHER_ICON.classList.add(`owf-${weatherData.weather[0].id}`);
       TEMPERATURE.textContent = `${Math.floor(weatherData.main.temp)} °C`;

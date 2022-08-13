@@ -167,7 +167,7 @@ BODY.addEventListener("click", (el) => {
 
 //--------------------TO DO-------------
 
-BTN_TODO.addEventListener("click", openToDo);
+BTN_TODO.addEventListener("click", () => {openToDo(lang.value)});
 todoFunction.init();
 
 //--------------------TRANSLATION------------

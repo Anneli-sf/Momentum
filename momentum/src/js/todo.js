@@ -1,14 +1,26 @@
 //--------------------TO DO-------------
+import { moveButtonTodo } from "./move-button";
+import { translation } from "./translation";
 
 const BTN_TODO = document.querySelector(".todo-button");
 const TODO_LIST = document.querySelector(".todo");
 
-function openToDo() {
+const activeOpt = document.querySelector("#active-option");
+const deletedOpt = document.querySelector("#deleted-option");
+const completedOpt = document.querySelector("#completed-option");
+
+function openToDo(lang) {
   TODO_LIST.classList.toggle("open");
   moveButtonTodo(BTN_TODO);
+
+  activeOpt.textContent = `${translation[lang].activeTr}`;
+    completedOpt.textContent = `${translation[lang].completedTr}`;
+    deletedOpt.textContent = `${translation[lang].deletedTr}`;
 }
 
+
 const todoFunction = {
+ 
   action(e) {
     const target = e.target;
     if (target.classList.contains("todo-action")) {

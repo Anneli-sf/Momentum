@@ -5,6 +5,7 @@ export const translation = {
     timesOfDayTr: ["night", "morning", "afternoon", "evening"],
     langTr: "en-US",
     cityTr: "Minsk",
+    cityPlaceHolderTr: "enter the city",
     windTr: "wind",
     humidityTr: "humidity",
     chooseLangTr: "choose language",
@@ -17,7 +18,10 @@ export const translation = {
     quoteTr: "quote",
     weatherTr: "weather",
     audioTr: "audio player",
-    todoTr: "todo"
+    todoTr: "todo",
+    activeTr: "active",
+    completedTr: "completed",
+    deletedTr: "deleted"
   },
 
   'ru': {
@@ -26,6 +30,7 @@ export const translation = {
     timesOfDayTr: ["ой ночи", "е утро", "ый день", "ый вечер"],
     langTr: "ru-RU",
     cityTr: "Минск",
+    cityPlaceHolderTr: "введите город",
     windTr: "ветер",
     humidityTr: "влажность воздуха",
     chooseLangTr: "выберите язык",
@@ -38,6 +43,9 @@ export const translation = {
     quoteTr: "цитата",
     weatherTr: "погода",
     audioTr: "аудио плейер",
-    todoTr: "список дел"
+    todoTr: "список дел",
+    activeTr: "активные",
+    completedTr: "выполненные",
+    deletedTr: "удалённые"
   }
 };
