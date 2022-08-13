@@ -5,13 +5,9 @@ import { translation } from "./translation";
 const NAME = document.querySelector(".name");
 const GREETING = document.querySelector(".greeting");
 
-// let lang = changeLanguage();
-// let lang = 'ru';
 const lang = {
   value: 'en',
 }
-
-console.log('greeting', lang)
 
 //------get greeting
 function showGreeting(lang) {

@@ -14,15 +14,24 @@ import {
   playNext,
   playPrev,
 } from "./js/audio-player";
+import { moveButtonTodo, moveButtonQuote } from "./js/move-button";
 import {
-  moveButtonTodo,
-  moveButtonQuote
-} from "./js/move-button";
-import { TIME, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, BG_THEME, bgThemeSetText, setSettings, createSettings, openSettings } from "./js/settings";
+  TIME,
+  BTN_SETTINGS,
+  SETTINGS,
+  PHOTO_SOURCE_OPTION,
+  BG_THEME,
+  bgThemeSetText,
+  BG_THEME_ARTICLE,
+  setSettings,
+  createSettings,
+  openSettings,
+} from "./js/settings";
 import { LANGUAGE_OPTION } from "./js/translate";
-import { getLinkUnsplash, getLinkFlickr } from "./js/upsplash-flick";
+import { theme,
+  // getLinkUnsplash, 
+  getLinkFlickr } from "./js/upsplash-flick";
 import { BTN_TODO, TODO_LIST, todoFunction, openToDo } from "./js/todo";
-
 
 const BODY = document.querySelector("body");
 const SLIDE_NEXT = document.querySelector(".slide-next");
@@ -31,7 +40,6 @@ const CHANGE_QUOTE = document.querySelector(".change-quote");
 
 let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
-
 
 //----------------------------when the page load---------------
 window.addEventListener("load", loadPage);
@@ -59,10 +67,7 @@ function showTime() {
 
 window.addEventListener("beforeunload", setLocalStorage);
 
-
 //-------------------BG IMAGE-----------------
-
-
 
 function getImageNumber() {
   if (randomNum < 10) bgImageNum = randomNum.toString().padStart(2, 0);
@@ -71,40 +76,46 @@ function getImageNumber() {
   return bgImageNum; //type String
 }
 
-PHOTO_SOURCE_OPTION.addEventListener('change', () => {
+PHOTO_SOURCE_OPTION.addEventListener("change", setBgImage);
+
+BG_THEME.addEventListener('change', () => {
+  console.log('flickr bg theme in input',BG_THEME.value);
   setBgImage();
-  if (PHOTO_SOURCE_OPTION.value == 'flickr') {
-    bgThemeSetText.classList.remove("hidden");
-    BG_THEME.classList.remove("hidden");
-  }
-});
+})
 
 async function setBgImage() {
-  //   const img = new Image(); //если так, то подвисает загрузка
-  //   img.src = "images/img/bg.jpg";
+  const img = new Image(); 
+
   let lang = "en";
   let timesOfDay = getTimesOfDay(lang);
-  let linkUnsplash = await getLinkUnsplash();
+  // let linkUnsplash = await getLinkUnsplash(); //включить
   let linkFlickr = await getLinkFlickr();
 
   getImageNumber();
 
-  if (PHOTO_SOURCE_OPTION.value == 'flickr') {
-    bgThemeSetText.classList.remove("hidden");
-    BG_THEME.classList.remove("hidden");
+  switch (PHOTO_SOURCE_OPTION.value) {
+    case "github":
+      {  
+        img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg`;
+        BG_THEME_ARTICLE.classList.remove("visible");
+        // BG_THEME.value = "";
+      }
+      break;
+    case "unsplash":
+      { // img.src = `${linkUnsplash}`;  //включить
+        BG_THEME_ARTICLE.classList.remove("visible");
+        // BG_THEME.value = "";
+      }
+      break;
+    default: {
+      img.src = `${linkFlickr}`; 
+      BG_THEME_ARTICLE.classList.add("visible");
+    };
   }
 
-  switch(PHOTO_SOURCE_OPTION.value) {
-    case 'github': return BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
-    case 'unsplash': return BODY.style.backgroundImage = `url(${linkUnsplash})`;
-    default: return BODY.style.backgroundImage = `url(${linkFlickr})`;
-  }
-
-  
-
-  //   img.onload = () => {
-  //     BODY.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg')`;
-  //   };
+    img.onload = () => {
+      BODY.style.backgroundImage = `url(${img.src})`;
+    };
 }
 
 //-------------------SLIDER-----------------
@@ -163,18 +174,18 @@ BODY.addEventListener("click", (el) => {
     TODO_LIST.classList.remove("open");
 });
 
-
-
 //--------------------TO DO-------------
 
-BTN_TODO.addEventListener("click", () => {openToDo(lang.value)});
+BTN_TODO.addEventListener("click", () => {
+  openToDo(lang.value);
+});
 todoFunction.init();
 
 //--------------------TRANSLATION------------
 
-LANGUAGE_OPTION.addEventListener('change', (e) => {
+LANGUAGE_OPTION.addEventListener("change", (e) => {
   lang.value = e.currentTarget.value;
-  console.log('сейчас', lang.value)
+  console.log("сейчас", lang.value);
   getWeather(lang.value);
   getQuote(lang.value);
   showDate(lang.value);
@@ -183,5 +194,3 @@ LANGUAGE_OPTION.addEventListener('change', (e) => {
 });
 
 //--------------------API------------
-
-
