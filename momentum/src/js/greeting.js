@@ -1,5 +1,4 @@
 import { translation } from "./translation";
-// import { LANGUAGE_OPTION, changeLanguage, language } from "./translate";
 
 //-----------------------------GREETING------------------
 const NAME = document.querySelector(".name");

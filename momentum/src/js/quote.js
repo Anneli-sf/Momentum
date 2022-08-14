@@ -1,8 +1,6 @@
 //--------------------QUOTES-------------
 import { getRandomNum } from "./random-num";
 
-
-
 const QUOTE = document.querySelector('.quote');
 const AUTHOR = document.querySelector('.author');
 

@@ -525,7 +525,7 @@ input[type="checkbox"]:checked + label:after {
   cursor: pointer;
   border: none;
   align-self: flex-end;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .todo-button:hover {

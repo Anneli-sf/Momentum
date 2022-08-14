@@ -4,7 +4,6 @@ import { setLocalStorage, getLocalStorage } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
 import { CITY, getWeather } from "./js/weather";
 import { getQuote } from "./js/quote";
-// import { translation } from "./js/translation";
 import {
   BTN_PLAY,
   BTN_NEXT,
@@ -17,6 +16,7 @@ import {
 import { moveButtonTodo, moveButtonQuote } from "./js/move-button";
 import {
   TIME,
+  LANGUAGE_OPTION,
   BTN_SETTINGS,
   SETTINGS,
   PHOTO_SOURCE_OPTION,
@@ -25,13 +25,16 @@ import {
   BG_THEME_ARTICLE,
   setSettings,
   createSettings,
-  openSettings,
+  openSettings
+  
 } from "./js/settings";
-import { LANGUAGE_OPTION } from "./js/translate";
 import { theme,
   // getLinkUnsplash, 
   getLinkFlickr } from "./js/upsplash-flick";
 import { BTN_TODO, TODO_LIST, todoFunction, openToDo } from "./js/todo";
+import {setSettingsLocalStorage, getSettingsLocalStorage} from "./js/local-storage-settings";
+
+
 
 const BODY = document.querySelector("body");
 const SLIDE_NEXT = document.querySelector(".slide-next");
@@ -47,9 +50,11 @@ window.addEventListener("load", loadPage);
 function loadPage() {
   showTime();
   setBgImage();
+  // getLocalStorage(lang);
   getLocalStorage();
   getWeather(lang.value);
   getQuote(lang.value);
+  getSettingsLocalStorage(lang.value);
 }
 
 //-----------------------------WATCH------------------
@@ -65,7 +70,16 @@ function showTime() {
 
 //-------------------LOCAL STORAGE-----------------
 
-window.addEventListener("beforeunload", setLocalStorage);
+window.addEventListener("beforeunload", () => {
+  setLocalStorage()
+  setSettingsLocalStorage()
+
+}
+);
+
+
+
+
 
 //-------------------BG IMAGE-----------------
 
@@ -76,13 +90,14 @@ function getImageNumber() {
   return bgImageNum; //type String
 }
 
-PHOTO_SOURCE_OPTION.addEventListener("change", setBgImage);
+PHOTO_SOURCE_OPTION.addEventListener("change", setBgImage); //change the source (GH or API)
 
-BG_THEME.addEventListener('change', () => {
+BG_THEME.addEventListener('change', () => { //change img depending on the theme
   console.log('flickr bg theme in input',BG_THEME.value);
   setBgImage();
 })
 
+//--------------main func of setting bg image
 async function setBgImage() {
   const img = new Image(); 
 
@@ -127,6 +142,7 @@ function slideNextImg() {
   if (randomNum == 21) randomNum = 1;
 
   setBgImage();
+  console.log('number of slide is', randomNum)
 }
 
 function slidePrevImg() {
@@ -134,6 +150,7 @@ function slidePrevImg() {
   if (randomNum == 0) randomNum = 20;
 
   setBgImage();
+  console.log('number of slide is', randomNum)
 }
 
 //--------------------WEATHER-------------
@@ -142,6 +159,7 @@ CITY.addEventListener("change", changeCity);
 
 function changeCity(e) {
   CITY.value = e.target.value;
+  console.log('change city', CITY.value );
   getWeather(lang.value);
 }
 
@@ -183,14 +201,19 @@ todoFunction.init();
 
 //--------------------TRANSLATION------------
 
-LANGUAGE_OPTION.addEventListener("change", (e) => {
+LANGUAGE_OPTION.addEventListener("change", translate);
+
+function translate(e) {
   lang.value = e.currentTarget.value;
-  console.log("сейчас", lang.value);
+  console.log("current language -", lang.value);
   getWeather(lang.value);
+  // changeCity(lang.value);
+  console.log("current city.value -", CITY.value);
   getQuote(lang.value);
   showDate(lang.value);
   showGreeting(lang.value);
   createSettings(lang.value);
-});
+  setSettingsLocalStorage(lang.value);
+}
 
 //--------------------API------------

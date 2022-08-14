@@ -3,11 +3,12 @@ import { DATE } from "./date";
 import { translation } from "./translation";
 import { moveButtonSettings } from "./move-button";
 import { BTN_TODO } from "./todo";
-// import { lang } from "./greeting";
+import { setSettingsLocalStorage } from "./local-storage-settings";
 
 const SETTINGS = document.querySelector(".settings");
 const BTN_SETTINGS = document.querySelector(".settings-button");
 
+const LANGUAGE_OPTION = document.querySelector(".change-language");
 const PHOTO_SOURCE_OPTION = document.querySelector(".change-photosource");
 const BG_THEME = document.querySelector(".choose-background");
 
@@ -63,6 +64,7 @@ function setSettings() {
     item.addEventListener("change", () => {
       if (item.checked == false) activities[index].classList.add("hidden");
       else activities[index].classList.remove("hidden");
+      
     })
   );
 }
@@ -79,7 +81,11 @@ function createSettings(lang) {
   weatherSetText.textContent = `${translation[lang].weatherTr}`;
   audioSetText.textContent = `${translation[lang].audioTr}`;
   todoSetText.textContent = `${translation[lang].todoTr}`;
+
+ 
 }
+
+
 
 function openSettings(lang) {
   SETTINGS.classList.toggle("open");
@@ -87,4 +93,24 @@ function openSettings(lang) {
   createSettings(lang);
 }
 
-export { TIME, BTN_SETTINGS, SETTINGS, PHOTO_SOURCE_OPTION, BG_THEME, BG_THEME_ARTICLE, bgThemeSetText,  setSettings, createSettings, openSettings };
+export {
+  LANGUAGE_OPTION,
+  TIME,
+  BTN_SETTINGS,
+  SETTINGS,
+  PHOTO_SOURCE_OPTION,
+  BG_THEME,
+  BG_THEME_ARTICLE,
+  bgThemeSetText,
+  setSettings,
+  createSettings,
+  openSettings,
+  langSetText,
+  timeSet,
+  audioSet,
+  dataSet,
+  quoteSet,
+  todoSet,
+  greetingSet,
+  weatherSet
+};
