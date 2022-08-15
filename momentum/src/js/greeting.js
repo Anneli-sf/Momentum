@@ -42,9 +42,9 @@ function getNameLocalStorage() {
 }
 
 let currGreeting;
-function setGreetingLocalStorage(lang) {
-  currGreeting = showGreeting(lang);
-  localStorage.setItem("greeting", showGreeting(lang));
+function setGreetingLocalStorage() {
+  currGreeting = showGreeting(lang.value);
+  localStorage.setItem("greeting", currGreeting);
 }
 
 function getGreetinglStorage() {

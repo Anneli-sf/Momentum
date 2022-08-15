@@ -1,7 +1,5 @@
-
 import { translation } from "./translation";
 import { lang } from "./greeting";
-
 
 //--------------------WEATHER-------------
 const WEATHER_ICON = document.querySelector(".weather-icon");
@@ -13,26 +11,17 @@ const CITY = document.querySelector(".city");
 const ERROR_TEXT = document.querySelector(".weather-error");
 
 // CITY.value = `${translation[lang.value].cityTr}`;
-// CITY.value = {
-//   en: translation[lang.value].cityTr,
-//   ru: translation[lang.value].cityTr,
-// }
 
 async function getWeather(lang) {
-  // if (lang == 'ru') CITY.value = `${translation.ru.cityTr}`;
-  // if (lang == 'en') CITY.value = `${translation.en.cityTr}`;
-
-  // let city = (!localStorage.getItem('city')) ? CITY.value : getLocalStorage('city');
-
- 
   // CITY.value = `${translation[lang].cityTr}`; // переводит, но не сохраняет значение после смены города.
-  //нужно как-то связать с changeCity() или изначально устанавливать: 
+  //нужно как-то связать с changeCity() или изначально устанавливать:
   // - если в локалсторидж ничего нет и ничего не меняли, то CITY.value = `${translation[lang].cityTr}`;
   // - если в локсторидж есть, то оттуда
   // - если меняли, то оттуда
 
-  if (localStorage.getItem('city')) CITY.value = localStorage.getItem("city"); else CITY.value = `${translation[lang].cityTr}`;
-  
+  if (localStorage.getItem("city")) CITY.value = localStorage.getItem("city");
+  else CITY.value = `${translation[lang].cityTr}`;
+
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=${lang}&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
   const weatherRes = await fetch(weatherUrl);
   const weatherData = await weatherRes.json();
