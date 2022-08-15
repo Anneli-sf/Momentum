@@ -3,7 +3,7 @@ import { DATE } from "./date";
 import { translation } from "./translation";
 import { moveButtonSettings } from "./move-button";
 import { BTN_TODO } from "./todo";
-import { setSettingsLocalStorage } from "./local-storage-settings";
+import { lang } from "./greeting";
 
 const SETTINGS = document.querySelector(".settings");
 const BTN_SETTINGS = document.querySelector(".settings-button");
@@ -59,14 +59,15 @@ let activities = [
   GREETING_ARTICLE,
 ];
 
-function setSettings() {
+function setSettings() { //hidden blockes if checkbox = false
   settingsData.forEach((item, index) =>
     item.addEventListener("change", () => {
       if (item.checked == false) activities[index].classList.add("hidden");
       else activities[index].classList.remove("hidden");
-      
     })
   );
+  setSettingsLocalStorage();
+  // getSettingsLocalStorage();
 }
 
 function createSettings(lang) {
@@ -81,16 +82,64 @@ function createSettings(lang) {
   weatherSetText.textContent = `${translation[lang].weatherTr}`;
   audioSetText.textContent = `${translation[lang].audioTr}`;
   todoSetText.textContent = `${translation[lang].todoTr}`;
-
- 
+  // setSettings();
+  // getSettingsLocalStorage();
 }
-
-
 
 function openSettings(lang) {
   SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
   createSettings(lang);
+  setSettings();
+  // getSettingsLocalStorage();
+}
+
+function setSettingsLocalStorage() {
+  // localStorage.setItem("langSetText", langSetText.textContent);
+
+  localStorage.setItem("LANGUAGE_OPTION", LANGUAGE_OPTION.value);
+  localStorage.setItem("PHOTO_SOURCE_OPTION", PHOTO_SOURCE_OPTION.value);
+  localStorage.setItem("BG_THEME", BG_THEME.value);
+  localStorage.setItem("timeSet", timeSet.checked);
+  localStorage.setItem("dataSet", dataSet.checked);
+  localStorage.setItem("greetingSet", greetingSet.checked);
+  localStorage.setItem("weatherSet", weatherSet.checked);
+  localStorage.setItem("quoteSet", quoteSet.checked);
+  localStorage.setItem("audioSet", audioSet.checked);
+  localStorage.setItem("todoSet", todoSet.checked);
+  localStorage.setItem("lang", lang.value);
+
+}
+
+function getSettingsLocalStorage(lang) {
+  //   if (localStorage.getItem("langSetText"))
+  //     langSetText.textContent = localStorage.getItem("langSetText");
+
+  let currTimeSet = JSON.parse(localStorage.getItem("timeSet"));
+  let currDataSet = JSON.parse(localStorage.getItem("dataSet"));
+  let currGreetingsSet = JSON.parse(localStorage.getItem("greetingSet"));
+  let currWeatherSet = JSON.parse(localStorage.getItem("weatherSet"));
+  let currQuoteSet = JSON.parse(localStorage.getItem("quoteSet"));
+  let currAudioSet = JSON.parse(localStorage.getItem("audioSet"));
+  let currTodoSet = JSON.parse(localStorage.getItem("todoSet"));
+
+  if (localStorage.getItem("LANGUAGE_OPTION"))
+    LANGUAGE_OPTION.value = localStorage.getItem("LANGUAGE_OPTION"); //язык сохраняется, но не переводится приложение
+
+  if (localStorage.getItem("PHOTO_SOURCE_OPTION"))
+    //словить текущее
+    PHOTO_SOURCE_OPTION.value = localStorage.getItem("PHOTO_SOURCE_OPTION");
+
+  if (localStorage.getItem("BG_THEME"))
+    BG_THEME.value = localStorage.getItem("BG_THEME"); //нужен else, если тема не записана?
+
+  if (currTimeSet == true) timeSet.checked = true; else timeSet.checked = false;
+  if (currDataSet == true) dataSet.checked = true; else dataSet.checked = false;
+  if (currGreetingsSet) greetingSet.checked = true; else greetingSet.checked = false;
+  if (currWeatherSet) weatherSet.checked = true; else weatherSet.checked = false;
+  if (currQuoteSet) quoteSet.checked = true; else quoteSet.checked = false;
+  if (currAudioSet) audioSet.checked = true; else audioSet.checked = false;
+  if (currTodoSet) todoSet.checked = true; else todoSet.checked = false;
 }
 
 export {
@@ -105,6 +154,8 @@ export {
   setSettings,
   createSettings,
   openSettings,
+  setSettingsLocalStorage,
+  getSettingsLocalStorage,
   langSetText,
   timeSet,
   audioSet,

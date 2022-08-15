@@ -33,4 +33,22 @@ function getTimesOfDay(lang) {
   return currTimesOfDay;
 }
 
-export { NAME, GREETING, lang, showGreeting, getTimesOfDay };
+function setNameLocalStorage() {
+  localStorage.setItem("name", NAME.value);
+}
+
+function getNameLocalStorage() {
+  if (localStorage.getItem("name")) NAME.value = localStorage.getItem("name");
+}
+
+let currGreeting;
+function setGreetingLocalStorage(lang) {
+  currGreeting = showGreeting(lang);
+  localStorage.setItem("greeting", showGreeting(lang));
+}
+
+function getGreetinglStorage() {
+  if (localStorage.getItem("greeting")) currGreeting = localStorage.getItem("greeting");
+}
+
+export { NAME, GREETING, lang, showGreeting, getTimesOfDay, setNameLocalStorage, getNameLocalStorage, setGreetingLocalStorage, getGreetinglStorage };

@@ -1,8 +1,7 @@
-import { showGreeting, getTimesOfDay, lang, GREETING } from "./js/greeting";
+import { showGreeting, getTimesOfDay, lang, setNameLocalStorage, getNameLocalStorage, setGreetingLocalStorage, getGreetinglStorage } from "./js/greeting";
 import { DATE, showDate } from "./js/date";
-import { setLocalStorage, getLocalStorage } from "./js/local-storage";
 import { getRandomNum } from "./js/random-num";
-import { CITY, getWeather } from "./js/weather";
+import { CITY, getWeather, setCityLocalStorage, getCityLocalStorage } from "./js/weather";
 import { getQuote } from "./js/quote";
 import {
   BTN_PLAY,
@@ -25,14 +24,23 @@ import {
   BG_THEME_ARTICLE,
   setSettings,
   createSettings,
-  openSettings
+  openSettings,
+  // setSettingsLocalStorage,
+  getSettingsLocalStorage,
+  timeSet,
+  audioSet,
+  dataSet,
+  quoteSet,
+  todoSet,
+  greetingSet,
+  weatherSet
   
 } from "./js/settings";
 import { theme,
   // getLinkUnsplash, 
   getLinkFlickr } from "./js/upsplash-flick";
 import { BTN_TODO, TODO_LIST, todoFunction, openToDo } from "./js/todo";
-import {setSettingsLocalStorage, getSettingsLocalStorage} from "./js/local-storage-settings";
+
 
 
 
@@ -50,11 +58,13 @@ window.addEventListener("load", loadPage);
 function loadPage() {
   showTime();
   setBgImage();
-  // getLocalStorage(lang);
-  getLocalStorage();
   getWeather(lang.value);
   getQuote(lang.value);
-  getSettingsLocalStorage(lang.value);
+  // createSettings(lang);
+  getNameLocalStorage();
+  getCityLocalStorage();
+  getSettingsLocalStorage();
+  getGreetinglStorage();
 }
 
 //-----------------------------WATCH------------------
@@ -68,11 +78,15 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
-//-------------------LOCAL STORAGE-----------------
+//----------------------------------------------------LOCAL STORAGE-----------------
 
 window.addEventListener("beforeunload", () => {
-  setLocalStorage()
-  setSettingsLocalStorage()
+  setNameLocalStorage();
+  // setCityLocalStorage();
+  // setSettingsLocalStorage();
+  // getSettingsLocalStorage();
+  
+
 
 }
 );
@@ -160,6 +174,7 @@ CITY.addEventListener("change", changeCity);
 function changeCity(e) {
   CITY.value = e.target.value;
   console.log('change city', CITY.value );
+  setCityLocalStorage();
   getWeather(lang.value);
 }
 
@@ -179,10 +194,17 @@ BTN_NEXT.addEventListener("click", playNext);
 BTN_PREV.addEventListener("click", playPrev);
 AUDIO.addEventListener("ended", playNext);
 
-//--------------------SETTINGS-------------
 
-BTN_SETTINGS.addEventListener("click", () => openSettings(lang.value));
-SETTINGS.addEventListener("click", setSettings);
+//-------------------------------------------SETTINGS-------------
+
+BTN_SETTINGS.addEventListener("click", () => {
+  openSettings(lang.value);
+  // getSettingsLocalStorage();
+});
+SETTINGS.addEventListener("click", () => {
+setSettings();
+// getSettingsLocalStorage();
+});
 
 BODY.addEventListener("click", (el) => {
   if (!el.target.closest(".settings") && !el.target.closest(".settings-button"))
@@ -213,7 +235,8 @@ function translate(e) {
   showDate(lang.value);
   showGreeting(lang.value);
   createSettings(lang.value);
-  setSettingsLocalStorage(lang.value);
+  // setSettingsLocalStorage(lang.value);
+  setGreetingLocalStorage(lang.value);
 }
 
 //--------------------API------------
