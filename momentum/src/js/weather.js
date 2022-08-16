@@ -21,6 +21,7 @@ async function getWeather(lang) {
 
   if (localStorage.getItem("city")) CITY.value = localStorage.getItem("city");
   else CITY.value = `${translation[lang].cityTr}`;
+  console.log('weather city', CITY.value)
 
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${CITY.value}&lang=${lang}&appid=3d3089a958d144a6b08451c705f4ef59&units=metric`;
   const weatherRes = await fetch(weatherUrl);

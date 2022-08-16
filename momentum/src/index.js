@@ -3,9 +3,9 @@ import {
   getTimesOfDay,
   lang,
   setNameLocalStorage,
-  getNameLocalStorage
+  getNameLocalStorage,
 } from "./js/greeting";
-import { DATE, showDate } from "./js/date";
+import { showDate } from "./js/date";
 import { getRandomNum } from "./js/random-num";
 import {
   CITY,
@@ -23,7 +23,7 @@ import {
   playNext,
   playPrev,
 } from "./js/audio-player";
-import { moveButtonTodo, moveButtonQuote } from "./js/move-button";
+import { moveButtonQuote } from "./js/move-button";
 import {
   TIME,
   LANGUAGE_OPTION,
@@ -36,7 +36,7 @@ import {
   setSettings,
   createSettings,
   openSettings,
-  // setSettingsLocalStorage,
+  setSettingsLocalStorage,
   getSettingsLocalStorage,
   timeSet,
   audioSet,
@@ -45,7 +45,6 @@ import {
   todoSet,
   greetingSet,
   weatherSet,
-  setSettingsLocalStorage,
 } from "./js/settings";
 import {
   theme,
@@ -77,11 +76,9 @@ function loadPage() {
   setBgImage();
   getWeather(lang.value);
   getQuote(lang.value);
-  // createSettings(lang);
+
   getNameLocalStorage();
   getCityLocalStorage();
-  getSettingsLocalStorage();
-  // getGreetinglStorage();
 }
 
 //-----------------------------WATCH------------------
@@ -99,8 +96,6 @@ function showTime() {
 
 window.addEventListener("beforeunload", () => {
   setNameLocalStorage();
-  // setSettingsLocalStorage();
-  // getSettingsLocalStorage();
 });
 
 //-------------------BG IMAGE-----------------
@@ -208,12 +203,15 @@ AUDIO.addEventListener("ended", playNext);
 //-------------------------------------------SETTINGS-------------
 
 BTN_SETTINGS.addEventListener("click", () => {
+  // getSettingsLocalStorage();
   openSettings(lang.value);
-  // getSettingsLocalStorage();
+  // setSettingsLocalStorage();
 });
+
 SETTINGS.addEventListener("click", () => {
-  setSettings();
   // getSettingsLocalStorage();
+  setSettings();
+  setSettingsLocalStorage();
 });
 
 BODY.addEventListener("click", (el) => {
@@ -239,14 +237,11 @@ function translate(e) {
   lang.value = e.currentTarget.value;
   console.log("current language -", lang.value);
   getWeather(lang.value);
-  // changeCity(lang.value);
   console.log("current city.value -", CITY.value);
   getQuote(lang.value);
   showDate(lang.value);
   showGreeting(lang.value);
   createSettings(lang.value);
-  // setSettingsLocalStorage(lang.value);
-  // setGreetingLocalStorage(lang.value);
 }
 
 //--------------------API------------

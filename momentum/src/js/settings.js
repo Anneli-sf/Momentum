@@ -60,13 +60,17 @@ let activities = [
 ];
 
 function setSettings() { //hidden blockes if checkbox = false
-  settingsData.forEach((item, index) =>
+  settingsData.forEach((item, index) => {
+
     item.addEventListener("change", () => {
       if (item.checked == false) activities[index].classList.add("hidden");
       else activities[index].classList.remove("hidden");
     })
+  }
+
+  
   );
-  setSettingsLocalStorage();
+  // setSettingsLocalStorage();
   // getSettingsLocalStorage();
 }
 
@@ -82,20 +86,31 @@ function createSettings(lang) {
   weatherSetText.textContent = `${translation[lang].weatherTr}`;
   audioSetText.textContent = `${translation[lang].audioTr}`;
   todoSetText.textContent = `${translation[lang].todoTr}`;
+
+  // getSettingsLocalStorage();
   // setSettings();
+ 
   // getSettingsLocalStorage();
 }
 
 function openSettings(lang) {
   SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
-  createSettings(lang);
+  getSettingsLocalStorage();
+
+  settingsData.forEach((item) => {
+
+    if (localStorage.get(`'${item}'`)) item.checked =  localStorage.get(`'${item}'`); else item.checked = true;
+
+  });
   setSettings();
-  // getSettingsLocalStorage();
+  createSettings(lang);
+  
+  // setSettingsLocalStorage();
+  
 }
 
 function setSettingsLocalStorage() {
-  // localStorage.setItem("langSetText", langSetText.textContent);
 
   localStorage.setItem("LANGUAGE_OPTION", LANGUAGE_OPTION.value);
   localStorage.setItem("PHOTO_SOURCE_OPTION", PHOTO_SOURCE_OPTION.value);
@@ -112,9 +127,7 @@ function setSettingsLocalStorage() {
 }
 
 function getSettingsLocalStorage(lang) {
-  //   if (localStorage.getItem("langSetText"))
-  //     langSetText.textContent = localStorage.getItem("langSetText");
-
+  
   let currTimeSet = JSON.parse(localStorage.getItem("timeSet"));
   let currDataSet = JSON.parse(localStorage.getItem("dataSet"));
   let currGreetingsSet = JSON.parse(localStorage.getItem("greetingSet"));
@@ -124,7 +137,7 @@ function getSettingsLocalStorage(lang) {
   let currTodoSet = JSON.parse(localStorage.getItem("todoSet"));
 
   if (localStorage.getItem("LANGUAGE_OPTION"))
-    LANGUAGE_OPTION.value = localStorage.getItem("LANGUAGE_OPTION"); //язык сохраняется, но не переводится приложение
+    LANGUAGE_OPTION.value = localStorage.getItem("LANGUAGE_OPTION"); 
 
   if (localStorage.getItem("PHOTO_SOURCE_OPTION"))
     //словить текущее
