@@ -1,0 +1,247 @@
+{
+  "en": [
+    {
+      "text": "'My mom always said life was like a box of chocolates. You never know what you're gonna get.'",
+      "author": "Forrest Gump"
+    },
+    {
+      "text": "'We buy things we don't need, to impress people we don't like.'",
+      "author": "Fight Club"
+    },
+    {
+      "text": "'Maybe we have to break ourselves to make something better out of ourselves'",
+      "author": "Fight Club"
+    },
+    {
+      "text": "'You need to take your enemy's side if you're going to see things the way they do.'",
+      "author": "The game of thrones"
+    },
+    {
+      "text": "'Never trust doctors.'",
+      "author": "Doctor House"
+    },
+    {
+      "text": "'The Force will be with you. Always.'",
+      "author": "Star Wars"
+    },
+    {
+      "text": "'Keep your friends close, but your enemies closer.'",
+      "author": "The Godfather"
+    },
+    {
+      "text": "'I'm going to make him an offer he can't refuse.'",
+      "author": "The Godfather"
+    },
+    {
+      "text": "'Houston, we have a problem.'",
+      "author": "Apollo 13"
+    },
+    {
+      "text": "'There's no place like home.'",
+      "author": "The Sage of Oz"
+    },
+    {
+      "text": "'After all, tomorrow is another day!'",
+      "author": "Gone with the wind"
+    },
+    {
+      "text": "'If nobody hates you, you’re doing something wrong.'",
+      "author": "Doctor House"
+    },
+    {
+      "text": "'The first rule of Fight Club is: You do not talk about Fight Club.'",
+      "author": "Fight Club"
+    },
+    {
+      "text": "'Get busy livin’, or get busy dyin’.'",
+      "author": "The Shawshank Redemption"
+    },
+    {
+      "text": "'Every man dies, but not every man really lives.'",
+      "author": "Braveheart"
+    },
+    {
+      "text": "'Do, or do not. There is no “try”'",
+      "author": "Star Wars"
+    },
+    {
+      "text": "'But they don’t know that we know they know we know!'",
+      "author": "Friends"
+    },
+    {
+      "text": "'You know what’s worse than useless? Useless and oblivious.'",
+      "author": "Doctor House"
+    },
+    {
+      "text": "'You want to make things right? Too bad. Nothing’s ever right.'",
+      "author": "Doctor House"
+    },
+    {
+      "text": "'If you talk to God you’re religious. If God talks to you, you’re psychotic.'",
+      "author": "Doctor House"
+    },
+    {
+      "text": "Stupid is as stupid does.",
+      "author": "Forrest Gump"
+    },
+    {
+      "text": "Gonna eat till I’m tired and then sleep till I’m hungry.",
+      "author": "Deadpool"
+    },
+    {
+      "text": "'Never underestimate the stupidity of idiots.'",
+      "author": "Deadpool"
+    },
+    {
+      "text": "'There is only one thing we say to death: Not today.'",
+      "author": "The game of thrones"
+    },
+    {
+      "text": "'That’s what I do: I drink and I know things.'",
+      "author": "The game of thrones"
+    },
+    {
+      "text": "'Frankly, my dear, I don’t give a damn.'",
+      "author": "Gone with the wind"
+    },
+    {
+      "text": "'How fickle is woman.'",
+      "author": "Gone with the wind"
+    },
+    {
+      "text": "'Chaos isn’t a pit. Chaos is a ladder.'",
+      "author": "The game of thrones"
+    },
+    {
+      "text": "'All we have to decide is what to do with the time that is given to us.'",
+      "author": "Lord of the Rings: The Fellowship of the Ring"
+    },
+    {
+      "text": "'It is not our abilities that show what we truly are. It is our choices.'",
+      "author": "Harry Potter and the Chamber of Secrets"
+    }
+  ],
+
+  "ru": [
+    {
+      "text": "'Мама всегда говорила, что жизнь – это коробка конфет. Никогда не знаешь, какую вытянешь.'",
+      "author": "Форрест Гамп"
+    },
+    {
+      "text": "'Мы покупаем вещи, которые нам не нужны, за деньги, которых у нас нет, чтобы удивлять людей, которые нам не нравятся.'",
+      "author": "Бойцовский клуб"
+    },
+    {
+      "text": "'Может быть, мы должны сломать себя, чтобы сделать что-то лучшее из нас'",
+      "author": "Бойцовский клуб"
+    },
+    {
+      "text": "'Вам нужно встать на сторону врага, если вы хотите смотреть на вещи так, как он..'",
+      "author": "Игра престолов"
+    },
+    {
+      "text": "'Никогда не доверяйте докторам.'",
+      "author": "Доктор Хаус"
+    },
+    {
+      "text": "'Сила будет с тобой. Всегда.'",
+      "author": "Звёздные войны"
+    },
+    {
+      "text": "'Держи друзей близко, а врагов – еще ближе.'",
+      "author": "Крёстный отец"
+    },
+    {
+      "text": "'Я сделаю ему предложение, от которого он не сможет отказаться.'",
+      "author": "Крёстный отец"
+    },
+    {
+      "text": "'Хьюстон, у нас проблемы.'",
+      "author": "Апполон 13"
+    },
+    {
+      "text": "'Нет ничего лучше дома.'",
+      "author": "Волшебник страны Оз"
+    },
+    {
+      "text": "'Завтра будет совсем другой день'",
+      "author": "Унесённые ветром"
+    },
+    {
+      "text": "'Если никто тебя не ненавидит, значит ты делаешь что-то не так.'",
+      "author": "Доктор Хаус"
+    },
+    {
+      "text": "'Первое правило Бойцовского клуба: никому не рассказывать о Бойцовском клубе.'",
+      "author": "Бойцовский клуб"
+    },
+    {
+      "text": "'Займитесь жизнью или займитесь смертью.'",
+      "author": "Побег из Шоушенка"
+    },
+    {
+      "text": "'Каждый мужчина умирает, но не каждый на самом деле живет.'",
+      "author": "Храброе сердце"
+    },
+    {
+      "text": "'Делай или не делай. Не надо “пытаться”'",
+      "author": "Звёздные войны"
+    },
+    {
+      "text": "'Но они не знают, что мы знаем, что они знают, что мы знаем!'",
+      "author": "Друзья"
+    },
+    {
+      "text": "'Вы знаете, что хуже того, чтобы быть бесполезным? Быть бесполезным и забывчивым.'",
+      "author": "Доктор Хаус"
+    },
+    {
+      "text": "'Вы хотите сделать все правильно? Очень плохо. Ничто никогда не может быть правильно.'",
+      "author": "Доктор Хаус"
+    },
+    {
+      "text": "'Если вы говорите с Богом, вы религиозны. Если Бог говорит с вами, вы - псих.'",
+      "author": "Доктор Хаус"
+    },
+    {
+      "text": "Дурак дураку рознь.",
+      "author": "Форрест Гамп"
+    },
+    {
+      "text": "Я буду есть, пока я не устану, а потом спать, пока я не проголодаюсь.",
+      "author": "Дэдпул"
+    },
+    {
+      "text": "'Никогда не стоит недооценивать глупость идиотов.'",
+      "author": "Дэдпул"
+    },
+    {
+      "text": "'Есть только одна вещь, которую мы говорим смерти: не сегодня.'",
+      "author": "Игра престолов"
+    },
+    {
+      "text": "'Вот что я делаю: я пью и разбираюсь в жизни.'",
+      "author": "Игра престолов"
+    },
+    {
+      "text": "'Честно говоря, моя дорогая, мне наплевать.'",
+      "author": "Унесённые ветром"
+    },
+    {
+      "text": "'Как непостоянны женщины.'",
+      "author": "Унесённые ветром"
+    },
+    {
+      "text": "'Хаос не яма. Хаос — это лестница.'",
+      "author": "Игра престолов"
+    },
+    {
+      "text": "'Все, что нам нужно решить - это что делать со временем, которое нам дано..'",
+      "author": "Властелин колец: Братство кольца"
+    },
+    {
+      "text": "'Не наши способности показывают, кто мы есть на самом деле. Это только наш выбор.'",
+      "author": "Гарри Поттер и Тайная комната"
+    }
+  ]
+}
