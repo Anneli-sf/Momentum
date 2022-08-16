@@ -60,7 +60,11 @@ let activities = [
 ];
 
 function setSettings() { //hidden blockes if checkbox = false
+  // setSettingsLocalStorage();
+
   settingsData.forEach((item, index) => {
+
+      // if (localStorage.get(`'${item}'`)) item.checked =  localStorage.get(`'${item}'`); else item.checked = true;
 
     item.addEventListener("change", () => {
       if (item.checked == false) activities[index].classList.add("hidden");
@@ -96,17 +100,15 @@ function createSettings(lang) {
 function openSettings(lang) {
   SETTINGS.classList.toggle("open");
   moveButtonSettings(BTN_SETTINGS);
-  getSettingsLocalStorage();
+  // getSettingsLocalStorage();
 
-  settingsData.forEach((item) => {
-
-    if (localStorage.get(`'${item}'`)) item.checked =  localStorage.get(`'${item}'`); else item.checked = true;
-
-  });
+  // setSettingsLocalStorage();
   setSettings();
   createSettings(lang);
+
+  console.log('timeset is', timeSet.checked)
   
-  // setSettingsLocalStorage();
+  setSettingsLocalStorage();
   
 }
 
