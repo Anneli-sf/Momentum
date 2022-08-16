@@ -1,5 +1,5 @@
 export const translation = {
-  'en': {
+  en: {
     greetTr: "Good ",
     plHolderTr: "enter your name",
     timesOfDayTr: ["night", "morning", "afternoon", "evening"],
@@ -21,10 +21,10 @@ export const translation = {
     todoTr: "todo",
     activeTr: "active",
     completedTr: "completed",
-    deletedTr: "deleted"
+    deletedTr: "deleted",
   },
 
-  'ru': {
+  ru: {
     greetTr: "Добр",
     plHolderTr: "введите ваше имя",
     timesOfDayTr: ["ой ночи", "е утро", "ый день", "ый вечер"],
@@ -46,6 +46,6 @@ export const translation = {
     todoTr: "список дел",
     activeTr: "активные",
     completedTr: "выполненные",
-    deletedTr: "удалённые"
-  }
+    deletedTr: "удалённые",
+  },
 };

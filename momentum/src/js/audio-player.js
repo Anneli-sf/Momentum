@@ -1,5 +1,6 @@
 import { playList } from "./playList";
 
+//----------------- AUDIO PLAYER-------------------
 const BTN_PLAY = document.querySelector(".play");
 const BTN_NEXT = document.querySelector(".play-next");
 const BTN_PREV = document.querySelector(".play-prev");

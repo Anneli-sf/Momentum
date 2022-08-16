@@ -1,153 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="images/favicon.ico" rel="shortcut icon" />
-  <link rel="stylesheet" href="css/owfont-regular.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/media.css">
+    <link href="images/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/owfont-regular.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
 
-  <title>momentum</title>
-</head>
-<body>
-  <!---------------------------------------HEADER--------------------------------------->
-  <header class="header">
-
-    <!---------------------------------------PLAYER--->
-    <div class="player">
-      <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
-      </div>
-      <ul class="play-list"></ul>
-    </div>
-
-    <!---------------------------------------WEATHER--->
-    <div class="weather">
-      <input type="text" class="city" />
-      <i class="weather-icon owf"></i>
-      <div class="weather-error"></div>
-      <div class="description-container">
-        <span class="temperature"></span>
-        <span class="weather-description"></span>
-      </div>
-      <div class="wind"></div>
-      <div class="humidity"></div>
-    </div>
-  </header>
-  <!---------------------------------------MAIN--->
-  <main class="main">
-    <div class="slider-icons">
-      <button class="slide-prev slider-icon"></button>
-      <button class="slide-next slider-icon"></button>
-    </div>
-    <time class="time"></time>
-    <date class="date"></date>
-    <div class="greeting-container">
-      <span class="greeting"></span>
-      <input type="text" class="name" />
-    </div>
-  </main>
-
-  <!---------------------------------------FOOTER-->
-  <footer class="footer">
-    <!--------------------------------settings-->
-    <button class="settings-button"></button>
-
-    <div class="settings">
-      <div class="choose-option">
-        <p class="text-choose-language">choose language</p>
-        <select class="change-language">
-          <option class="option" value="en">english</option>
-          <option class="option" value="ru">русский</option>
-        </select>
-      </div>
-      
-      <div class="choose-option">
-        <p class="text-choose-photosource">choose photo source</p>
-        <select class="change-photosource">
-          <option class="option" value="github">GitHub</option>
-          <option class="option" value="unsplash">Unsplash API</option>
-          <option class="option" value="flickr">Flickr API</option>
-        </select>
+    <title>momentum</title>
+  </head>
+  <body>
+    <!---------------------------------------HEADER--------------------------------------->
+    <header class="header">
+      <!---------------------------------------PLAYER--->
+      <div class="player">
+        <div class="player-controls">
+          <button class="play-prev player-icon"></button>
+          <button class="play player-icon"></button>
+          <button class="play-next player-icon"></button>
+        </div>
+        <ul class="play-list"></ul>
       </div>
 
-      <div class="choose-option choose-option-background">
-        <p class="text-choose-background">enter background theme</p>
-        <input type="text" class="choose-background">
+      <!---------------------------------------WEATHER--->
+      <div class="weather">
+        <input type="text" class="city" />
+        <i class="weather-icon owf"></i>
+        <div class="weather-error"></div>
+        <div class="description-container">
+          <span class="temperature"></span>
+          <span class="weather-description"></span>
+        </div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
       </div>
+    </header>
+    <!---------------------------------------MAIN--->
+    <main class="main">
+      <div class="slider-icons">
+        <button class="slide-prev slider-icon"></button>
+        <button class="slide-next slider-icon"></button>
+      </div>
+      <time class="time"></time>
+      <date class="date"></date>
+      <div class="greeting-container">
+        <span class="greeting"></span>
+        <input type="text" class="name" />
+      </div>
+    </main>
 
-      <div class="line"></div>
+    <!---------------------------------------FOOTER-->
+    <footer class="footer">
+      <!--------------------------------settings-->
+      <button class="settings-button"></button>
 
-      <div class="show-option">
-        
-        <div class="show-inputs">
-          <div>
-            <input type="checkbox" id="time" name="time" checked>
-            <label class="text-time" for="time">time</label>
-          </div>
-          <div>
-            <input type="checkbox" id="date" name="date" checked>
-            <label class="text-date" for="date">date</label>
-          </div>
-          <div>
-            <input type="checkbox" id="greeting" name="greeting" checked>
-            <label class="text-greeting" for="greeting">greeting</label>
-          </div>
-          <div>
-            <input type="checkbox" id="quote" name="quote" checked>
-            <label class="text-quotes" for="quote">quote</label>
-          </div>
-          <div>
-            <input type="checkbox" id="weather" name="weather" checked>
-            <label class="text-weather" for="weather">weather</label>
-          </div>
-          <div>
-            <input type="checkbox" id="audio" name="audio" checked>
-            <label class="text-audioplayer" for="audio">audioplayer</label>
-          </div>
-          <div>
-            <input type="checkbox" id="todo" name="todo" checked>
-            <label class="text-todo" for="todo">todo</label>
+      <div class="settings">
+        <div class="choose-option">
+          <p class="text-choose-language">choose language</p>
+          <select class="change-language">
+            <option class="option" value="en">english</option>
+            <option class="option" value="ru">русский</option>
+          </select>
+        </div>
+
+        <div class="choose-option">
+          <p class="text-choose-photosource">choose photo source</p>
+          <select class="change-photosource">
+            <option class="option" value="github">GitHub</option>
+            <option class="option" value="unsplash">Unsplash API</option>
+            <option class="option" value="flickr">Flickr API</option>
+          </select>
+        </div>
+
+        <div class="choose-option choose-option-background">
+          <p class="text-choose-background">enter background theme</p>
+          <input type="text" class="choose-background" />
+        </div>
+
+        <div class="line"></div>
+
+        <div class="show-option">
+          <div class="show-inputs">
+            <div>
+              <input type="checkbox" id="time" name="time" checked />
+              <label class="text-time" for="time">time</label>
+            </div>
+            <div>
+              <input type="checkbox" id="date" name="date" checked />
+              <label class="text-date" for="date">date</label>
+            </div>
+            <div>
+              <input type="checkbox" id="greeting" name="greeting" checked />
+              <label class="text-greeting" for="greeting">greeting</label>
+            </div>
+            <div>
+              <input type="checkbox" id="quote" name="quote" checked />
+              <label class="text-quotes" for="quote">quote</label>
+            </div>
+            <div>
+              <input type="checkbox" id="weather" name="weather" checked />
+              <label class="text-weather" for="weather">weather</label>
+            </div>
+            <div>
+              <input type="checkbox" id="audio" name="audio" checked />
+              <label class="text-audioplayer" for="audio">audioplayer</label>
+            </div>
+            <div>
+              <input type="checkbox" id="todo" name="todo" checked />
+              <label class="text-todo" for="todo">todo</label>
+            </div>
           </div>
         </div>
-      
+        <div class="line"></div>
+        <div class="about-me">
+          <p>©2022</p>
+          <a href="https://rs.school/js/" target="_blank"
+            ><img
+              class="rsschool"
+              src="images/svg/rs_school.svg"
+              alt="logo_rss"
+          /></a>
+          <a href="https://github.com/Anneli-sf" target="_blank"
+            ><img class="github" src="images/svg/github.png" alt="logo_github"
+          /></a>
+        </div>
       </div>
-      <div class="line"></div>
-      <div class="about-me">
-			  <p>©2022</p>
-        <a href="https://rs.school/js/" target="_blank"><img class="rsschool" src="images/svg/rs_school.svg" alt="logo_rss"></a>
-			  <a href="https://github.com/Anneli-sf" target="_blank"><img class="github" src="images/svg/github.png" alt="logo_github"></a>
-		  </div>
-    </div>
 
-    <!--------------------------------quotes-->
-    <div class="footer-quotes">
+      <!--------------------------------quotes-->
+      <div class="footer-quotes">
         <button class="change-quote"></button>
         <div>
           <div class="quote"></div>
           <div class="author"></div>
         </div>
-    </div>
-    <!--------------------------------to do-->
-    <button class="todo-button"></button>
-    <div class="todo">
-      <div class="todo-input">
-        <input class="todo-text" type="text">
-        <span class="todo-add"></span>
       </div>
-      <select class="todo-options">
-        <option class="option" id="active-option" value="active">active</option>
-        <option class="option" id="completed-option" value="completed">completed</option>
-        <option class="option" id="deleted-option" value="deleted">deleted</option>
-      </select>
-      <ul class="todo-items" data-todo-option="active"></ul>
-    </div>
-  </footer>
+      <!--------------------------------to do-->
+      <button class="todo-button"></button>
+      <div class="todo">
+        <div class="todo-input">
+          <input class="todo-text" type="text" />
+          <span class="todo-add"></span>
+        </div>
+        <select class="todo-options">
+          <option class="option" id="active-option" value="active">
+            active
+          </option>
+          <option class="option" id="completed-option" value="completed">
+            completed
+          </option>
+          <option class="option" id="deleted-option" value="deleted">
+            deleted
+          </option>
+        </select>
+        <ul class="todo-items" data-todo-option="active"></ul>
+      </div>
+    </footer>
 
-  <!-- <script src="js/script.js"></script> -->
-</body>
+    <!-- <script src="js/script.js"></script> -->
+  </body>
 </html>

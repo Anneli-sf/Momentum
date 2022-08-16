@@ -5,8 +5,8 @@ const NAME = document.querySelector(".name");
 const GREETING = document.querySelector(".greeting");
 
 const lang = {
-  value: 'en',
-}
+  value: "en",
+};
 
 //------get greeting
 function showGreeting(lang) {
@@ -33,6 +33,7 @@ function getTimesOfDay(lang) {
   return currTimesOfDay;
 }
 
+//----------------- greeting local storage-------------------
 function setNameLocalStorage() {
   localStorage.setItem("name", NAME.value);
 }
@@ -41,14 +42,12 @@ function getNameLocalStorage() {
   if (localStorage.getItem("name")) NAME.value = localStorage.getItem("name");
 }
 
-// let currGreeting;
-// function setGreetingLocalStorage() {
-//   currGreeting = showGreeting(lang.value);
-//   localStorage.setItem("greeting", currGreeting);
-// }
-
-// function getGreetinglStorage() {
-//   if (localStorage.getItem("greeting")) currGreeting = localStorage.getItem("greeting");
-// }
-
-export { NAME, GREETING, lang, showGreeting, getTimesOfDay, setNameLocalStorage, getNameLocalStorage };
+export {
+  NAME,
+  GREETING,
+  lang,
+  showGreeting,
+  getTimesOfDay,
+  setNameLocalStorage,
+  getNameLocalStorage,
+};

@@ -1,7 +1,7 @@
-//--------------------TO DO-------------
 import { moveButtonTodo } from "./move-button";
 import { translation } from "./translation";
 
+//--------------------TO DO-------------
 const BTN_TODO = document.querySelector(".todo-button");
 const TODO_LIST = document.querySelector(".todo");
 

@@ -31,26 +31,14 @@ import {
   SETTINGS,
   PHOTO_SOURCE_OPTION,
   BG_THEME,
-  bgThemeSetText,
   BG_THEME_ARTICLE,
   setSettings,
   createSettings,
   openSettings,
   setSettingsLocalStorage,
   getSettingsLocalStorage,
-  timeSet,
-  audioSet,
-  dataSet,
-  quoteSet,
-  todoSet,
-  greetingSet,
-  weatherSet,
 } from "./js/settings";
-import {
-  theme,
-  // getLinkUnsplash,
-  getLinkFlickr,
-} from "./js/upsplash-flick";
+import { getLinkUnsplash, getLinkFlickr } from "./js/upsplash-flick";
 import { BTN_TODO, TODO_LIST, todoFunction, openToDo } from "./js/todo";
 
 const BODY = document.querySelector("body");
@@ -62,7 +50,6 @@ let randomNum = getRandomNum(1, 20); //type Number
 let bgImageNum;
 
 //----------------------------when the page load---------------
-
 window.addEventListener("load", loadPage);
 
 function loadPage() {
@@ -71,7 +58,7 @@ function loadPage() {
     if (LANGUAGE_OPTION.value == "en") lang.value = "en";
     else lang.value = "ru";
   }
-
+  getSettingsLocalStorage();
   showTime();
   setBgImage();
   getWeather(lang.value);
@@ -92,14 +79,13 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
-//----------------------------------------------------LOCAL STORAGE-----------------
-
+//--------------------------------------LOCAL STORAGE-----------------
 window.addEventListener("beforeunload", () => {
   setNameLocalStorage();
+  setSettingsLocalStorage();
 });
 
 //-------------------BG IMAGE-----------------
-
 function getImageNumber() {
   if (randomNum < 10) bgImageNum = randomNum.toString().padStart(2, 0);
   else bgImageNum = randomNum.toString();
@@ -122,8 +108,9 @@ async function setBgImage() {
 
   let lang = "en";
   let timesOfDay = getTimesOfDay(lang);
-  // let linkUnsplash = await getLinkUnsplash(); //включить
+  let linkUnsplash = await getLinkUnsplash(); //включить
   let linkFlickr = await getLinkFlickr();
+  if (linkFlickr == null) BG_THEME.value = "";
 
   getImageNumber();
 
@@ -132,14 +119,12 @@ async function setBgImage() {
       {
         img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg`;
         BG_THEME_ARTICLE.classList.remove("visible");
-        BG_THEME.value = "";
       }
       break;
     case "unsplash":
       {
-        // img.src = `${linkUnsplash}`;  //включить
+        img.src = `${linkUnsplash}`; //включить
         BG_THEME_ARTICLE.classList.remove("visible");
-        // BG_THEME.value = "";
       }
       break;
     default: {
@@ -174,7 +159,6 @@ function slidePrevImg() {
 }
 
 //--------------------WEATHER-------------
-
 CITY.addEventListener("change", changeCity);
 
 function changeCity(e) {
@@ -185,7 +169,6 @@ function changeCity(e) {
 }
 
 //--------------------QUOTES-------------
-
 CHANGE_QUOTE.addEventListener("click", changeQuote);
 
 function changeQuote() {
@@ -194,22 +177,18 @@ function changeQuote() {
 }
 
 //--------------------AUDIO PLAYER-------------
-
 BTN_PLAY.addEventListener("click", playAudio);
 BTN_NEXT.addEventListener("click", playNext);
 BTN_PREV.addEventListener("click", playPrev);
 AUDIO.addEventListener("ended", playNext);
 
 //-------------------------------------------SETTINGS-------------
-
 BTN_SETTINGS.addEventListener("click", () => {
-  // getSettingsLocalStorage();
+  getSettingsLocalStorage();
   openSettings(lang.value);
-  // setSettingsLocalStorage();
 });
 
 SETTINGS.addEventListener("click", () => {
-  // getSettingsLocalStorage();
   setSettings();
   setSettingsLocalStorage();
 });
@@ -223,14 +202,12 @@ BODY.addEventListener("click", (el) => {
 });
 
 //--------------------TO DO-------------
-
 BTN_TODO.addEventListener("click", () => {
   openToDo(lang.value);
 });
 todoFunction.init();
 
 //--------------------TRANSLATION------------
-
 LANGUAGE_OPTION.addEventListener("change", translate);
 
 function translate(e) {
@@ -243,5 +220,3 @@ function translate(e) {
   showGreeting(lang.value);
   createSettings(lang.value);
 }
-
-//--------------------API------------

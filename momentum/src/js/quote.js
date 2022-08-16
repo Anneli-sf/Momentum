@@ -1,12 +1,12 @@
-//--------------------QUOTES-------------
 import { getRandomNum } from "./random-num";
 
-const QUOTE = document.querySelector('.quote');
-const AUTHOR = document.querySelector('.author');
+//--------------------QUOTES-------------
+const QUOTE = document.querySelector(".quote");
+const AUTHOR = document.querySelector(".author");
 
 async function getQuote(lang) {
-  let quote = 'quotes.json';
-  
+  let quote = "quotes.json";
+
   const res = await fetch(quote);
   const data = await res.json();
 
@@ -16,4 +16,4 @@ async function getQuote(lang) {
   AUTHOR.textContent = `${data[lang][quoteIndex].author}`;
 }
 
-export {getQuote};
+export { getQuote };
