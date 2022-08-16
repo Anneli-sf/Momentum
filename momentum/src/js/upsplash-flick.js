@@ -31,6 +31,10 @@ async function getLinkFlickr() {
   const resFlickr = await fetch(urlFlickr);
   const dataFlickr = await resFlickr.json();
 
+  // if (?????? == undefined) {
+  //   urlFlickr = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=99db50653f5b2b2c4dfe4766555f1d09&tags=blacksquare&extras=url_l&format=json&nojsoncallback=1`;
+  // }
+
   return dataFlickr.photos.photo[photoNum].url_l;
 }
 

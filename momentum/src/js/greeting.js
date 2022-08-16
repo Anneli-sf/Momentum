@@ -41,14 +41,14 @@ function getNameLocalStorage() {
   if (localStorage.getItem("name")) NAME.value = localStorage.getItem("name");
 }
 
-let currGreeting;
-function setGreetingLocalStorage() {
-  currGreeting = showGreeting(lang.value);
-  localStorage.setItem("greeting", currGreeting);
-}
+// let currGreeting;
+// function setGreetingLocalStorage() {
+//   currGreeting = showGreeting(lang.value);
+//   localStorage.setItem("greeting", currGreeting);
+// }
 
-function getGreetinglStorage() {
-  if (localStorage.getItem("greeting")) currGreeting = localStorage.getItem("greeting");
-}
+// function getGreetinglStorage() {
+//   if (localStorage.getItem("greeting")) currGreeting = localStorage.getItem("greeting");
+// }
 
-export { NAME, GREETING, lang, showGreeting, getTimesOfDay, setNameLocalStorage, getNameLocalStorage, setGreetingLocalStorage, getGreetinglStorage };
+export { NAME, GREETING, lang, showGreeting, getTimesOfDay, setNameLocalStorage, getNameLocalStorage };

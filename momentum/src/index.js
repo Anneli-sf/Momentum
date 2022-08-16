@@ -3,9 +3,7 @@ import {
   getTimesOfDay,
   lang,
   setNameLocalStorage,
-  getNameLocalStorage,
-  setGreetingLocalStorage,
-  getGreetinglStorage,
+  getNameLocalStorage
 } from "./js/greeting";
 import { DATE, showDate } from "./js/date";
 import { getRandomNum } from "./js/random-num";
@@ -47,6 +45,7 @@ import {
   todoSet,
   greetingSet,
   weatherSet,
+  setSettingsLocalStorage,
 } from "./js/settings";
 import {
   theme,
@@ -119,6 +118,7 @@ BG_THEME.addEventListener("change", () => {
   //change img depending on the theme
   console.log("flickr bg theme in input", BG_THEME.value);
   setBgImage();
+  setSettingsLocalStorage(); //remember the theme
 });
 
 //--------------main func of setting bg image
@@ -137,7 +137,7 @@ async function setBgImage() {
       {
         img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timesOfDay}/${bgImageNum}.jpg`;
         BG_THEME_ARTICLE.classList.remove("visible");
-        // BG_THEME.value = "";
+        BG_THEME.value = "";
       }
       break;
     case "unsplash":
