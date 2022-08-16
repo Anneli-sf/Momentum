@@ -25,11 +25,13 @@ async function getWeather(lang) {
     TEMPERATURE.textContent = "";
     WIND.textContent = "";
     HUMIDITY.textContent = "";
+    WEATHER_DISCR.textContent = "";
   } else if (weatherRes.status == 400) {
     ERROR_TEXT.textContent = `Error: enter the city`;
     TEMPERATURE.textContent = "";
     WIND.textContent = "";
     HUMIDITY.textContent = "";
+    WEATHER_DISCR.textContent = "";
   } else {
     ERROR_TEXT.textContent = "";
   }
